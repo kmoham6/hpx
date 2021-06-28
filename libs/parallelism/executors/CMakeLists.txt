@@ -28,6 +28,7 @@ set(executors_headers
     hpx/executors/parallel_executor.hpp
     hpx/executors/restricted_thread_pool_executor.hpp
     hpx/executors/sequenced_executor.hpp
+    hpx/executors/sender_receiver_executor.hpp
     hpx/executors/service_executors.hpp
     hpx/executors/std_execution_policy.hpp
     hpx/executors/sync.hpp

@@ -16,10 +16,7 @@
 #include <hpx/execution_base/sender.hpp>
 #include <hpx/functional/invoke_result.hpp>
 #include <hpx/functional/tag_fallback_dispatch.hpp>
-#include <hpx/iterator_support/counting_iterator.hpp>
-#include <hpx/iterator_support/iterator_range.hpp>
-#include <hpx/iterator_support/range.hpp>
-#include <hpx/iterator_support/traits/is_range.hpp>
+#include <hpx/iterator_support/counting_shape.hpp>
 #include <hpx/type_support/pack.hpp>
 
 #include <exception>
@@ -114,20 +111,6 @@ namespace hpx { namespace execution { namespace experimental {
                     bulk_receiver<R, Shape, F>(std::forward<R>(r), shape, f));
             }
         };
-
-        ///////////////////////////////////////////////////////////////////////
-        template <typename Incrementable>
-        using counting_shape_type = hpx::util::iterator_range<
-            hpx::util::counting_iterator<Incrementable>>;
-
-        template <typename Incrementable>
-        HPX_HOST_DEVICE inline counting_shape_type<Incrementable>
-        make_counting_shape(Incrementable n)
-        {
-            return hpx::util::make_iterator_range(
-                hpx::util::make_counting_iterator(Incrementable(0)),
-                hpx::util::make_counting_iterator(n));
-        }
     }    // namespace detail
 
     ///////////////////////////////////////////////////////////////////////////
@@ -145,8 +128,8 @@ namespace hpx { namespace execution { namespace experimental {
         friend constexpr HPX_FORCEINLINE auto tag_fallback_dispatch(
             bulk_t, S&& s, Shape const& shape, F&& f)
         {
-            return detail::bulk_sender<S, detail::counting_shape_type<Shape>,
-                F>{std::forward<S>(s), detail::make_counting_shape(shape),
+            return detail::bulk_sender<S, hpx::util::counting_shape_type<Shape>,
+                F>{std::forward<S>(s), hpx::util::make_counting_shape(shape),
                 std::forward<F>(f)};
         }
 
