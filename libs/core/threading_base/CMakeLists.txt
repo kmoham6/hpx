@@ -58,11 +58,14 @@ set(threading_base_compat_headers
 
 set(threading_base_sources
     annotated_function.cpp
+    create_thread.cpp
+    create_work.cpp
     execution_agent.cpp
     external_timer.cpp
     print.cpp
     register_thread.cpp
     scheduler_base.cpp
+    set_thread_state.cpp
     thread_data.cpp
     thread_data_stackful.cpp
     thread_data_stackless.cpp
@@ -102,6 +105,7 @@ add_hpx_module(
     hpx_itt_notify
     hpx_logging
     hpx_memory
+    hpx_timing
     hpx_type_support
     ${additional_dependencies}
   CMAKE_SUBDIRS examples tests
