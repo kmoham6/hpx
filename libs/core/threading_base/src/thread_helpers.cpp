@@ -37,6 +37,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 namespace hpx { namespace threads {
+
     ///////////////////////////////////////////////////////////////////////////
     thread_state set_thread_state(thread_id_type const& id,
         thread_schedule_state state, thread_restart_state stateex,
@@ -50,7 +51,7 @@ namespace hpx { namespace threads {
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    thread_id_type set_thread_state(thread_id_type const& id,
+    thread_id_ref_type set_thread_state(thread_id_type const& id,
         hpx::chrono::steady_time_point const& abs_time,
         std::atomic<bool>* timer_started, thread_schedule_state state,
         thread_restart_state stateex, thread_priority priority,
@@ -434,10 +435,12 @@ namespace hpx { namespace this_thread {
     {
         // let the thread manager do other things while waiting
         threads::thread_self& self = threads::get_self();
-        threads::thread_id_type const& id = self.get_thread_id();
+
+        // keep alive
+        threads::thread_id_ref_type id = self.get_thread_id();
 
         // handle interruption, if needed
-        threads::interruption_point(id, ec);
+        threads::interruption_point(id.noref(), ec);
         if (ec)
             return threads::thread_restart_state::unknown;
 
@@ -450,7 +453,8 @@ namespace hpx { namespace this_thread {
             util::verify_no_locks();
 #endif
 #ifdef HPX_HAVE_THREAD_DESCRIPTION
-            threads::detail::reset_lco_description desc(id, description, ec);
+            threads::detail::reset_lco_description desc(
+                id.noref(), description, ec);
 #else
             HPX_UNUSED(description);
 #endif
@@ -478,7 +482,7 @@ namespace hpx { namespace this_thread {
         }
 
         // handle interruption, if needed
-        threads::interruption_point(id, ec);
+        threads::interruption_point(id.noref(), ec);
         if (ec)
             return threads::thread_restart_state::unknown;
 
@@ -487,7 +491,7 @@ namespace hpx { namespace this_thread {
         {
             HPX_THROWS_IF(ec, yield_aborted, "suspend",
                 "thread({}, {}) aborted (yield returned wait_abort)",
-                threads::get_self_id(), threads::get_thread_description(id));
+                id.noref(), threads::get_thread_description(id.noref()));
         }
 
         if (&ec != &throws)
@@ -503,10 +507,12 @@ namespace hpx { namespace this_thread {
     {
         // schedule a thread waking us up at_time
         threads::thread_self& self = threads::get_self();
-        threads::thread_id_type const& id = self.get_thread_id();
+
+        // keep alive
+        threads::thread_id_ref_type id = self.get_thread_id();
 
         // handle interruption, if needed
-        threads::interruption_point(id, ec);
+        threads::interruption_point(id.noref(), ec);
         if (ec)
             return threads::thread_restart_state::unknown;
 
@@ -520,7 +526,8 @@ namespace hpx { namespace this_thread {
             util::verify_no_locks();
 #endif
 #ifdef HPX_HAVE_THREAD_DESCRIPTION
-            threads::detail::reset_lco_description desc(id, description, ec);
+            threads::detail::reset_lco_description desc(
+                id.noref(), description, ec);
 #else
             HPX_UNUSED(description);
 #endif
@@ -528,8 +535,8 @@ namespace hpx { namespace this_thread {
             threads::detail::reset_backtrace bt(id, ec);
 #endif
             std::atomic<bool> timer_started(false);
-            threads::thread_id_type timer_id =
-                threads::set_thread_state(id, abs_time, &timer_started,
+            threads::thread_id_ref_type timer_id =
+                threads::set_thread_state(id.noref(), abs_time, &timer_started,
                     threads::thread_schedule_state::pending,
                     threads::thread_restart_state::timeout,
                     threads::thread_priority::boost, true, ec);
@@ -565,7 +572,7 @@ namespace hpx { namespace this_thread {
                 hpx::util::yield_while(
                     [&timer_started]() { return !timer_started.load(); },
                     "set_thread_state_timed");
-                threads::set_thread_state(timer_id,
+                threads::set_thread_state(timer_id.noref(),
                     threads::thread_schedule_state::pending,
                     threads::thread_restart_state::abort,
                     threads::thread_priority::boost, true, ec1);
@@ -573,7 +580,7 @@ namespace hpx { namespace this_thread {
         }
 
         // handle interruption, if needed
-        threads::interruption_point(id, ec);
+        threads::interruption_point(id.noref(), ec);
         if (ec)
             return threads::thread_restart_state::unknown;
 
@@ -582,7 +589,7 @@ namespace hpx { namespace this_thread {
         {
             HPX_THROWS_IF(ec, yield_aborted, "suspend_at",
                 "thread({}, {}) aborted (yield returned wait_abort)",
-                threads::get_self_id(), threads::get_thread_description(id));
+                id.noref(), threads::get_thread_description(id.noref()));
         }
 
         if (&ec != &throws)
