@@ -88,6 +88,13 @@ void test_static_chunk_size()
         parameters_test(scs);
     }
 }
+void test_adaptive_core_chunk_size()
+{
+    {
+        hpx::execution::experimental::adaptive_core_chunk_size acc;
+        parameters_test(acc);
+    }
+}
 void test_adaptive_static_chunk_size()
 {
     {
@@ -209,6 +216,7 @@ int hpx_main(hpx::program_options::variables_map& vm)
 
     test_dynamic_chunk_size();
     test_static_chunk_size();
+    test_adaptive_core_chunk_size();
     test_adaptive_static_chunk_size();
     test_guided_chunk_size();
     test_auto_chunk_size();
