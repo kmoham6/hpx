@@ -96,6 +96,25 @@ namespace hpx::execution::experimental {
                 chunk_size *= 2;
             }
 
+
+            // if (input_size >= (1ull << 25))
+            // {
+            //     coeff = 8;
+            // }
+            // if (input_size >= (1ull << 21))
+            // {
+            //     coeff = 4;
+            // }
+            //  else if (input_size >= (1ull << 19))
+            // {
+            //     coeff = 1;
+            // }
+            // while (chunk_size * coeff * cores < input_size)
+            // {
+            //     chunk_size *= 2;
+            // }
+            std::cout << "this is chunk size in adaptive_static_chunk: " << chunk_size <<std::endl;
+            std::cout << "this is input size in adaptive_static_chunk: " << input_size <<std::endl;
             return chunk_size;
         }
         /// \endcond

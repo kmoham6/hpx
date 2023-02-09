@@ -47,8 +47,11 @@ namespace hpx::execution::experimental {
 
         constexpr adaptive_core_chunk_size() noexcept
           : chunk_size_(0)
-          , t1_(110495)
-          , t2_(22495500)
+          , min_time_(35000)
+        //   , t1_(400000)
+        //   , t2_(600000)
+        //   , t3_(1368150)
+        //   , t4_(154036)
           , num_iters_for_timing_(0)
         {
         }
@@ -61,8 +64,11 @@ namespace hpx::execution::experimental {
         ///
         constexpr explicit adaptive_core_chunk_size(std::size_t chunk_size)
           : chunk_size_(chunk_size)
-          , t1_(110495)
-          , t2_(22495500)
+          , min_time_(35000)
+        //   , t1_(400000)
+        //   , t2_(600000)
+        //   , t3_(1368150)
+        //   , t4_(154036)
           , num_iters_for_timing_(0)
         {
         }
@@ -83,11 +89,13 @@ namespace hpx::execution::experimental {
         // }
 
         explicit adaptive_core_chunk_size(
-            hpx::chrono::steady_duration const& rel_time1,
-            hpx::chrono::steady_duration const& rel_time2,
+          hpx::chrono::steady_duration const& rel_time,
+            // hpx::chrono::steady_duration const& rel_time2,
+            // hpx::chrono::steady_duration const& rel_time3,
             std::uint64_t num_iters_for_timing = 0) noexcept
-          : t1_(rel_time1.value().count())
-          , t2_(rel_time2.value().count())
+          : min_time_(rel_time.value().count())
+        //   , t1_(rel_time1.value().count())
+        //   , t2_(rel_time2.value().count())
           , num_iters_for_timing_(num_iters_for_timing)
         {
         }
@@ -122,11 +130,19 @@ namespace hpx::execution::experimental {
                 if (test_chunk_size != 0)
                 {
                     t = (high_resolution_clock::now() - t) / test_chunk_size;
-                    if (t != 0 && t1_ >= t && t2_ >= t)
+                    if (t == 0 )
                     {
-                        // return execution time for one iteration
+                        return std::chrono::nanoseconds(2);
+                    }
+                    else if (min_time_ >= t)
+                    {
                         return std::chrono::nanoseconds(t);
                     }
+                    // else if (t1_ >= t && t2_ >= t && t3_ >= t)
+                    // {
+                    //     // return execution time for one iteration
+                    //     return std::chrono::nanoseconds(t);
+                    // }
                 }
             }
 
@@ -134,31 +150,63 @@ namespace hpx::execution::experimental {
         }
         //calculate number of cores
         template <typename Executor>
-        constexpr std::size_t processing_units_count(Executor&&,
+        constexpr std::size_t processing_units_count(Executor&& exec,
             hpx::chrono::steady_duration const& iteration_duration, std::size_t count) const noexcept
         {
+        //     std::size_t s_core =
+        // hpx::parallel::execution::processing_units_count(HPX_FORWARD(Executor, exec), iteration_duration, count);
+        // std::size_t s_core =
+        // hpx::parallel::execution::processing_units_count(exec, iteration_duration, count);
+
             // std::size_t chunk_size = 1;
             // double coeff = 1;
-            std::uint64_t num_cores = 1;
-            std::uint64_t t1 = 110495;
-            std::uint64_t t2 = 22495500;
+            // std::uint64_t num_cores = 2;
+            // std::uint64_t t1 = 400000;
+            // std::uint64_t t2 = 600000;
+            // std::uint64_t t3 = 1368150;
+            // std::uint64_t t4 = 154036;
+            std::uint64_t min_time = 35000;
             auto us = std::chrono::duration_cast<std::chrono::nanoseconds>(
                     iteration_duration.value());
-            std::uint64_t num_iteration1 = t1 / us.count();
-            std::uint64_t num_iteration2 = t2 / us.count();
+            // std::uint64_t min_cores = us.count() / min_time_;
+            std::size_t s_core = 40;
+            std::cout << "\n\n" << "this part is the start of adaptive_core_chunk_size : " << "********************************************" << "\n" << std::endl;
+            std::cout << "this is count in proccessing_unit: " << count << std::endl;
+            std::cout << "this is time per iteration:" << us.count() << std::endl;
+            std::cout << "this is number of cores:" << (count * us.count()) / min_time <<std::endl;
+            std::size_t t_time = count * us.count ();
+            std::size_t num_cores = (std::min) (s_core, (std::size_t)(t_time / min_time_));
+            // std::uint64_t num_iteration2 = t2 / us.count();
+            // std::uint64_t num_iteration3 = t3 / us.count();
+            // std::uint64_t num_iteration4 = t4 / us.count();
 
-            if (count >= num_iteration2)
+            // if (count <= num_iteration1)
+            // {
+            //     num_cores = 2;
+            // }
+            // if (count <= num_iteration2)
+            // {
+            //     num_cores = 8;
+            // }
+            // else if (count <= num_iteration3)
+            // {
+            //     num_cores = 16;
+            // }
+            // else if (count > num_iteration3)
+            // {
+            //     num_cores = 32;
+            // }
+            // else 
+            // {
+            //     num_cores = 2;
+            // }
+            // num_cores = 2;
+            if (num_cores < 1 )
             {
-                num_cores = 2;
+
+                num_cores = 1;
             }
-            else if (count >= num_iteration1)
-            {
-                num_cores = 2;
-            }
-            else
-            {
-                num_cores = 2;
-            }
+            //  std::cout << "this is the final number of cores:" << num_cores <<std::endl;
 
             return num_cores;
         }
@@ -169,6 +217,8 @@ namespace hpx::execution::experimental {
             hpx::chrono::steady_duration const& iteration_duration,
             std::size_t cores, std::size_t count) noexcept
         {
+            std::cout <<"\n" << std::endl;
+            std::cout <<"this is number of cores in get_chunk_chunk: " << cores << std::endl;
             // return chunk size which will create the required amount of work
             if (iteration_duration.value().count() != 0)
             {
@@ -176,7 +226,7 @@ namespace hpx::execution::experimental {
                     iteration_duration.value());
                 // return (std::min)(count, (std::size_t)(min_time_ / ns.count()));
             }
-            // return (count + cores - 1) / cores;
+
 
             // use the given chunk size if given
             if (chunk_size_ != 0)
@@ -194,29 +244,42 @@ namespace hpx::execution::experimental {
             // std::uint64_t num_iteration2 = t2 / iteration_duration.value();
             // std::uint64_t num_iters_for_timing = 0;
 
-            if (cores == 1)
-            {
-                return count;
-            }
+            // if (cores == 1)
+            // {
+            //     return count;
+            // }
 
-            if (cores == 2)
+            if (cores < 32)
             {
-                coeff = 1;
+                coeff = 2;
             }
-            else if (cores == 8)
+            // if (cores ==8 )
+            // {
+            //     coeff = 4;
+            // }
+            // else if (cores == 16)
+            // {
+            //     coeff = 1;
+            // }
+            // if (cores == 32)
+            // {
+            //     coeff = 8;
+            // }
+            else 
             {
-                coeff = 8;
+                coeff = 4;
             }
-            else
-            {
-                coeff = 8;
-            }
-
+            // std::cout << "\n" << "chunk_size*cores*coeff : " << chunk_size * cores * coeff << std::endl;
             while (chunk_size * cores * coeff < count)
             {
                 chunk_size *= 2;
             }
-
+            std::cout << "this is chunk_size: " << chunk_size << std::endl;
+            std::cout << "this is cores:: " << cores << std::endl;
+            std::cout << "this is count: " << count << std::endl;
+            std::cout <<  "\n" << "this is the end of adaptive_core_chunk_size" << "*****************************************" << "\n\n" << std::endl;
+            // double num_chunk = count / chunk_size;
+            // std::cout << "this is number of chunk: " <<num_chunk << "\n" << std::endl;
             return chunk_size;
         }
         /// \endcond
@@ -228,7 +291,7 @@ namespace hpx::execution::experimental {
         template <typename Archive>
         void serialize(Archive& ar, const unsigned int /* version */)
         {
-            ar& chunk_size_& t1_& t2_& num_iters_for_timing_;
+            ar& chunk_size_& min_time_& num_iters_for_timing_;
         }
         /// \endcond
 
@@ -237,10 +300,19 @@ namespace hpx::execution::experimental {
         std::size_t chunk_size_;
 
         // target time for on thread (nanoseconds)
-        std::uint64_t t1_;
+        std::uint64_t min_time_;
 
         // target time for on thread (nanoseconds)
-        std::uint64_t t2_;
+        // std::uint64_t t1_;
+
+        // // target time for on thread (nanoseconds)
+        // std::uint64_t t2_;
+
+        // // target time for on thread (nanoseconds)
+        // std::uint64_t t3_;
+
+        // target time for on thread (nanoseconds)
+        // std::uint64_t t4_;
 
         // number of iteration to use for timing
         std::uint64_t num_iters_for_timing_;
@@ -275,5 +347,5 @@ namespace hpx {
             using adaptive_core_chunk_size HPX_DEPRECATED_V(1, 9,
                 "hpx::execution::auto_chunk_size is deprecated, use "
                 "hpx::execution::experimental::auto_chunk_size instead") =
-                hpx::execution::experimental::auto_chunk_size;
+                hpx::execution::experimental::adaptive_core_chunk_size;
         }

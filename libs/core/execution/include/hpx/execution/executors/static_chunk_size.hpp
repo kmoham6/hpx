@@ -79,8 +79,11 @@ namespace hpx::execution::experimental {
             {
                 chunk_size *= 2;
             }
-
+            
+            std::cout<< "this is chunk_size in static_chunk_size: " << chunk_size << std::endl;
+            std::cout<< "this is number of taskkk in static_chunk: " << num_tasks << std::endl;
             return chunk_size;
+            
         }
         /// \endcond
 
