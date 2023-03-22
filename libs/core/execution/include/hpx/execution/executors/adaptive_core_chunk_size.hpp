@@ -47,12 +47,13 @@ namespace hpx::execution::experimental {
 
         constexpr adaptive_core_chunk_size() noexcept
           : chunk_size_(0)
-          , min_time_(35000)
+          , min_time_(32768)
+          , t_(1)
         //   , t1_(400000)
         //   , t2_(600000)
         //   , t3_(1368150)
         //   , t4_(154036)
-          , num_iters_for_timing_(0)
+        //   , num_iters_for_timing_(0)
         {
         }
 
@@ -64,12 +65,13 @@ namespace hpx::execution::experimental {
         ///
         constexpr explicit adaptive_core_chunk_size(std::size_t chunk_size)
           : chunk_size_(chunk_size)
-          , min_time_(35000)
+          , min_time_(32768)
+          , t_(1)
         //   , t1_(400000)
         //   , t2_(600000)
         //   , t3_(1368150)
         //   , t4_(154036)
-          , num_iters_for_timing_(0)
+        //   , num_iters_for_timing_(0)
         {
         }
 
@@ -92,11 +94,12 @@ namespace hpx::execution::experimental {
           hpx::chrono::steady_duration const& rel_time,
             // hpx::chrono::steady_duration const& rel_time2,
             // hpx::chrono::steady_duration const& rel_time3,
-            std::uint64_t num_iters_for_timing = 0) noexcept
+            std::uint64_t t = 10) noexcept
           : min_time_(rel_time.value().count())
         //   , t1_(rel_time1.value().count())
         //   , t2_(rel_time2.value().count())
-          , num_iters_for_timing_(num_iters_for_timing)
+        //   , num_iters_for_timing_(num_iters_for_timing)
+             , t_(t)
         {
         }
 
@@ -110,43 +113,44 @@ namespace hpx::execution::experimental {
         auto measure_iteration(
             Executor&& exec, F&& f, std::size_t count) noexcept
         {
+            std:: uint64_t t = 1;
             // by default use 1% of the iterations
-            if (num_iters_for_timing_ == 0)
-            {
-                num_iters_for_timing_ = count / 100;
-            }
+            // if (num_iters_for_timing_ == 0)
+            // {
+            //     num_iters_for_timing_ = count / 100;
+            // }
 
-            // perform measurements only if necessary
-            if (num_iters_for_timing_ > 0)
-            {
-                using hpx::chrono::high_resolution_clock;
-                std::uint64_t t = high_resolution_clock::now();
+            // // perform measurements only if necessary
+            // if (num_iters_for_timing_ > 0)
+            // {
+            //     using hpx::chrono::high_resolution_clock;
+            //     std::uint64_t t = high_resolution_clock::now();
 
-                // use executor to launch given function for measurements
-                std::size_t test_chunk_size =
-                    hpx::parallel::execution::sync_execute(
-                        HPX_FORWARD(Executor, exec), f, num_iters_for_timing_);
+            //     // use executor to launch given function for measurements
+            //     std::size_t test_chunk_size =
+            //         hpx::parallel::execution::sync_execute(
+            //             HPX_FORWARD(Executor, exec), f, num_iters_for_timing_);
 
-                if (test_chunk_size != 0)
-                {
-                    t = (high_resolution_clock::now() - t) / test_chunk_size;
-                    if (t == 0 )
-                    {
-                        return std::chrono::nanoseconds(2);
-                    }
-                    else if (min_time_ >= t)
-                    {
-                        return std::chrono::nanoseconds(t);
-                    }
-                    // else if (t1_ >= t && t2_ >= t && t3_ >= t)
-                    // {
-                    //     // return execution time for one iteration
-                    //     return std::chrono::nanoseconds(t);
-                    // }
-                }
-            }
+            //     if (test_chunk_size != 0)
+            //     {
+            //         t = (high_resolution_clock::now() - t) / test_chunk_size;
+            //         if (t == 0 )
+            //         {
+            //             return std::chrono::nanoseconds(2);
+            //         }
+            //         else if (min_time_ >= t)
+            //         {
+            //             return std::chrono::nanoseconds(t);
+            //         }
+            //         // else if (t1_ >= t && t2_ >= t && t3_ >= t)
+            //         // {
+            //         //     // return execution time for one iteration
+            //         //     return std::chrono::nanoseconds(t);
+            //         // }
+            //     }
+            // }
 
-            return std::chrono::nanoseconds(0);
+            return std::chrono::nanoseconds(t);
         }
         //calculate number of cores
         template <typename Executor>
@@ -165,7 +169,7 @@ namespace hpx::execution::experimental {
             // std::uint64_t t2 = 600000;
             // std::uint64_t t3 = 1368150;
             // std::uint64_t t4 = 154036;
-            std::uint64_t min_time = 35000;
+            std::uint64_t min_time = 32768;
             auto us = std::chrono::duration_cast<std::chrono::nanoseconds>(
                     iteration_duration.value());
             // std::uint64_t min_cores = us.count() / min_time_;
@@ -201,12 +205,12 @@ namespace hpx::execution::experimental {
             //     num_cores = 2;
             // }
             // num_cores = 2;
-            if (num_cores < 1 )
+            if (num_cores <= 2 )
             {
 
-                num_cores = 1;
+                num_cores = 2;
             }
-            //  std::cout << "this is the final number of cores:" << num_cores <<std::endl;
+             std::cout << "this is the final number of cores:" << num_cores <<std::endl;
 
             return num_cores;
         }
@@ -251,7 +255,7 @@ namespace hpx::execution::experimental {
 
             if (cores < 32)
             {
-                coeff = 2;
+                coeff = 1;
             }
             // if (cores ==8 )
             // {
@@ -291,7 +295,7 @@ namespace hpx::execution::experimental {
         template <typename Archive>
         void serialize(Archive& ar, const unsigned int /* version */)
         {
-            ar& chunk_size_& min_time_& num_iters_for_timing_;
+            ar& chunk_size_& min_time_& t_;
         }
         /// \endcond
 
@@ -315,7 +319,8 @@ namespace hpx::execution::experimental {
         // std::uint64_t t4_;
 
         // number of iteration to use for timing
-        std::uint64_t num_iters_for_timing_;
+        // std::uint64_t num_iters_for_timing_;
+           std::uint64_t t_;
         /// \endcond
     };
 }    // namespace hpx::execution
