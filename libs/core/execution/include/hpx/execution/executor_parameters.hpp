@@ -8,6 +8,7 @@
 
 #include <hpx/config.hpp>
 
+#include <hpx/execution/executors/adaptive_core_chunk_size.hpp>
 #include <hpx/execution/executors/adaptive_static_chunk_size.hpp>
 #include <hpx/execution/executors/auto_chunk_size.hpp>
 #include <hpx/execution/executors/dynamic_chunk_size.hpp>

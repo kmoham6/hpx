@@ -64,6 +64,8 @@ namespace hpx::execution::experimental {
             // use the given chunk size if given
             if (chunk_size_ != 0)
             {
+                std::cout<< "this is chunk_size in static_chunk_size: " << chunk_size_ << std::endl;
+                std::cout << "this is num of cores: " <<cores << std::endl;
                 return chunk_size_;
             }
 
@@ -74,11 +76,14 @@ namespace hpx::execution::experimental {
 
             // Return a chunk size that is a power of two; and that leads to at
             // least 2 chunks per core, and at most 4 chunks per core.
+            std::cout << "this is num of cores: " <<cores << std::endl;
             std::size_t chunk_size = 1;
             while (chunk_size * cores * 4 < num_tasks)    //-V112
             {
                 chunk_size *= 2;
             }
+            std::cout << "this is num of coresssssssssssss: " <<cores << std::endl;
+            std::cout << "this is chunk : " <<chunk_size << std::endl;
 
             return chunk_size;
         }

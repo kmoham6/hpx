@@ -31,14 +31,23 @@ namespace hpx::execution::experimental {
         constexpr explicit num_cores(std::size_t cores = 1) noexcept
           : num_cores_(cores == 0 ? 1 : cores)
         {
+            // std::cout<<"here????"<< cores <<std::endl;
         }
 
         /// \cond NOINTERNAL
         // discover the number of cores to use for parallelization
         template <typename Executor>
-        constexpr std::size_t processing_units_count(Executor&&,
-            hpx::chrono::steady_duration const&, std::size_t) const noexcept
+        friend std::size_t tag_invoke(hpx::parallel::execution::processing_units_count_t, num_cores const& params,
+            Executor&&, hpx::chrono::steady_duration const& iteration_duration, std::size_t count) noexcept
         {
+            return params.processing_units_count(iteration_duration, count);
+        }
+        std::size_t processing_units_count(
+            hpx::chrono::steady_duration const& iteration_duration, std::size_t count) const noexcept
+        {
+            std::cout << "num_cores.hpp\n";
+            std::size_t num_cores_ = 2;
+            std::cout <<"are you here??" <<num_cores_<< std::endl; 
             return num_cores_;
         }
         /// \endcond
