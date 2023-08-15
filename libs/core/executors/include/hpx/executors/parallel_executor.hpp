@@ -177,7 +177,7 @@ namespace hpx::execution {
 #if defined(HPX_HAVE_THREAD_DESCRIPTION)
         friend constexpr parallel_policy_executor tag_invoke(
             hpx::execution::experimental::with_annotation_t,
-            parallel_policy_executor const& exec, char const* annotation)
+            parallel_policy_executor exec, char const* annotation)
         {
             auto exec_with_annotation = exec;
             exec_with_annotation.annotation_ = annotation;
@@ -186,7 +186,7 @@ namespace hpx::execution {
 
         friend parallel_policy_executor tag_invoke(
             hpx::execution::experimental::with_annotation_t,
-            parallel_policy_executor const& exec, std::string annotation)
+            parallel_policy_executor exec, std::string annotation)
         {
             auto exec_with_annotation = exec;
             exec_with_annotation.annotation_ =
@@ -194,9 +194,9 @@ namespace hpx::execution {
             return exec_with_annotation;
         }
 
-        friend constexpr char const* tag_invoke(
+        friend constexpr char tag_invoke(
             hpx::execution::experimental::get_annotation_t,
-            parallel_policy_executor const& exec) noexcept
+            parallel_policy_executor exec) noexcept
         {
             return exec.annotation_;
         }
@@ -204,7 +204,7 @@ namespace hpx::execution {
 
         friend constexpr parallel_policy_executor tag_invoke(
             hpx::parallel::execution::with_processing_units_count_t,
-            parallel_policy_executor const& exec,
+            parallel_policy_executor exec,
             std::size_t num_cores) noexcept
         {
             auto exec_with_num_cores = exec;
@@ -214,7 +214,7 @@ namespace hpx::execution {
 
         friend constexpr std::size_t tag_invoke(
             hpx::parallel::execution::processing_units_count_t,
-            parallel_policy_executor const& exec,
+            parallel_policy_executor exec,
             hpx::chrono::steady_duration const& = hpx::chrono::null_duration,
             std::size_t = 0)
         {
@@ -223,7 +223,7 @@ namespace hpx::execution {
 
         friend constexpr parallel_policy_executor tag_invoke(
             hpx::execution::experimental::with_first_core_t,
-            parallel_policy_executor const& exec,
+            parallel_policy_executor exec,
             std::size_t first_core) noexcept
         {
             auto exec_with_first_core = exec;
@@ -233,14 +233,14 @@ namespace hpx::execution {
 
         friend constexpr std::size_t tag_invoke(
             hpx::execution::experimental::get_first_core_t,
-            parallel_policy_executor const& exec) noexcept
+            parallel_policy_executor exec) noexcept
         {
             return exec.get_first_core();
         }
 
         friend auto tag_invoke(
             hpx::execution::experimental::get_processing_units_mask_t,
-            parallel_policy_executor const& exec)
+            parallel_policy_executor exec)
         {
             auto pool = exec.pool_ ?
                 exec.pool_ :
@@ -249,7 +249,7 @@ namespace hpx::execution {
         }
 
         friend auto tag_invoke(hpx::execution::experimental::get_cores_mask_t,
-            parallel_policy_executor const& exec)
+            parallel_policy_executor exec)
         {
             auto pool = exec.pool_ ?
                 exec.pool_ :
@@ -262,7 +262,7 @@ namespace hpx::execution {
         template <typename Parameters>
         std::size_t processing_units_count(Parameters&&,
             hpx::chrono::steady_duration const& = hpx::chrono::null_duration,
-            std::size_t = 0) const
+            std::size_t = 0)
         {
             return get_num_cores();
         }
@@ -282,7 +282,7 @@ namespace hpx::execution {
             return !(*this == rhs);
         }
 
-        [[nodiscard]] constexpr parallel_policy_executor const& context()
+        [[nodiscard]] constexpr parallel_policy_executor context()
             const noexcept
         {
             return *this;
@@ -306,7 +306,7 @@ namespace hpx::execution {
         template <typename F, typename... Ts>
         friend decltype(auto) tag_invoke(
             hpx::parallel::execution::sync_execute_t,
-            [[maybe_unused]] parallel_policy_executor const& exec, F&& f,
+            [[maybe_unused]] parallel_policy_executor exec, F&& f,
             Ts&&... ts)
         {
 #if defined(HPX_HAVE_THREAD_DESCRIPTION)
@@ -323,7 +323,7 @@ namespace hpx::execution {
         template <typename F, typename... Ts>
         friend decltype(auto) tag_invoke(
             hpx::parallel::execution::async_execute_t,
-            parallel_policy_executor const& exec, F&& f, Ts&&... ts)
+            parallel_policy_executor exec, F&& f, Ts&&... ts)
         {
 #if defined(HPX_HAVE_THREAD_DESCRIPTION)
             hpx::threads::thread_description desc(f, exec.annotation_);
@@ -341,7 +341,7 @@ namespace hpx::execution {
         template <typename F, typename Future, typename... Ts>
         friend decltype(auto) tag_invoke(
             hpx::parallel::execution::then_execute_t,
-            parallel_policy_executor const& exec, F&& f, Future&& predecessor,
+            parallel_policy_executor exec, F&& f, Future&& predecessor,
             Ts&&... ts)
         {
             using result_type =
@@ -383,7 +383,7 @@ namespace hpx::execution {
 
         template <typename F, typename... Ts>
         friend void tag_invoke(hpx::parallel::execution::post_t,
-            parallel_policy_executor const& exec, F&& f, Ts&&... ts)
+            parallel_policy_executor exec, F&& f, Ts&&... ts)
         {
             exec.post_impl(HPX_FORWARD(F, f), HPX_FORWARD(Ts, ts)...);
         }
@@ -397,7 +397,7 @@ namespace hpx::execution {
         // clang-format on
         friend decltype(auto) tag_invoke(
             hpx::parallel::execution::bulk_async_execute_t,
-            parallel_policy_executor const& exec, F&& f, S const& shape,
+            parallel_policy_executor exec, F&& f, S const& shape,
             Ts&&... ts)
         {
 #if defined(HPX_HAVE_THREAD_DESCRIPTION)
@@ -438,7 +438,7 @@ namespace hpx::execution {
         // clang-format on
         friend decltype(auto) tag_invoke(
             hpx::parallel::execution::bulk_then_execute_t,
-            parallel_policy_executor const& exec, F&& f, S const& shape,
+            parallel_policy_executor exec, F&& f, S const& shape,
             Future&& predecessor, Ts&&... ts)
         {
 #if defined(HPX_HAVE_THREAD_DESCRIPTION)
@@ -459,7 +459,7 @@ namespace hpx::execution {
         // map execution policy categories to proper executor
         friend decltype(auto) tag_invoke(
             hpx::execution::experimental::to_non_par_t,
-            parallel_policy_executor const& exec)
+            parallel_policy_executor exec)
         {
             if constexpr (std::is_same_v<Policy, launch::sync_policy>)
             {
@@ -485,8 +485,10 @@ namespace hpx::execution {
 
     private:
         /// \cond NOINTERNAL
-        [[nodiscard]] std::size_t get_num_cores() const
+        [[nodiscard]] std::size_t get_num_cores() 
         {
+            // num_cores_ =32;
+            // std::cout << "this is num_core in parallel_executor: " << num_cores_ <<std::endl;
             if (num_cores_ != 0)
             {
                 return num_cores_;
@@ -509,7 +511,7 @@ namespace hpx::execution {
             }
         }
 
-        [[nodiscard]] std::size_t get_first_core() const noexcept
+        [[nodiscard]] std::size_t get_first_core() noexcept
         {
             return first_core_;
         }
@@ -548,7 +550,7 @@ namespace hpx::execution {
         )>
     // clang-format on
     auto tag_invoke(
-        Tag tag, parallel_policy_executor<Policy> const& exec, Property&& prop)
+        Tag tag, parallel_policy_executor<Policy> exec, Property&& prop)
         -> decltype(std::declval<parallel_policy_executor<Policy>>().policy(
                         std::declval<Tag>()(
                             std::declval<Policy>(), std::declval<Property>())),
@@ -565,7 +567,7 @@ namespace hpx::execution {
             hpx::execution::experimental::is_scheduling_property_v<Tag>
         )>
     // clang-format on
-    auto tag_invoke(Tag tag, parallel_policy_executor<Policy> const& exec)
+    auto tag_invoke(Tag tag, parallel_policy_executor<Policy> exec)
         -> decltype(std::declval<Tag>()(std::declval<Policy>()))
     {
         return tag(exec.policy());
@@ -601,4 +603,4 @@ namespace hpx::parallel::execution {
     {
     };
     /// \endcond
-}    // namespace hpx::parallel::execution
+}    // namespace hpx::parallel::execut

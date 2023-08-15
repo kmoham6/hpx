@@ -168,6 +168,11 @@ namespace executor_example {
                 std::forward<Future>(predecessor), std::forward<Ts>(ts)...);
         }
 
+          [[nodiscard]] constexpr std::decay_t<BaseExecutor> const& get_executor()
+            const noexcept
+        {
+            return exec_;
+        }
     private:
         using thread_hook = hpx::function<void()>;
 
@@ -176,6 +181,36 @@ namespace executor_example {
         thread_hook on_stop_;
     };
 
+// support all properties exposed by the wrapped executor
+    // clang-format off
+    template <typename Tag, typename BaseExecutor,typename Property,
+        HPX_CONCEPT_REQUIRES_(
+            hpx::execution::experimental::is_scheduling_property_v<Tag>
+        )>
+    // clang-format on
+    auto tag_invoke(Tag tag,
+        disable_thread_stealing_executor<BaseExecutor> const& exec,
+        Property&& prop)
+        -> decltype(disable_thread_stealing_executor<BaseExecutor>(
+            std::declval<Tag>()(
+                std::declval<BaseExecutor>(), std::declval<Property>())))
+    {
+        return disable_thread_stealing_executor<BaseExecutor>(
+            tag(exec.get_executor(), HPX_FORWARD(Property, prop)));
+    }
+
+    // clang-format off
+    template <typename Tag, typename BaseExecutor,
+        HPX_CONCEPT_REQUIRES_(
+            hpx::execution::experimental::is_scheduling_property_v<Tag>
+        )>
+    // clang-format on
+    auto tag_invoke(
+        Tag tag, disable_thread_stealing_executor<BaseExecutor> const& exec)
+        -> decltype(std::declval<Tag>()(std::declval<BaseExecutor>()))
+    {
+        return tag(exec.get_executor());
+    }
     template <typename Executor, typename OnStart, typename OnStop>
     executor_with_thread_hooks(Executor&&, OnStart&&, OnStop&&)
         -> executor_with_thread_hooks<std::decay_t<Executor>>;

@@ -1,0 +1,1771 @@
+[33mcommit 5d5dbb11e1efb4b1b0e110ce9daf5baa25419d87[m[33m ([m[1;36mHEAD -> [m[1;32mcore[m[33m, [m[1;33mtag: stable[m[33m, [m[1;31morigin/staging[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 09eabc71da 3b0dfcd4b3
+Author: StellarBot <contact@stellar-group.org>
+Date:   Tue Jul 25 15:34:41 2023 +0000
+
+    Merge #6306
+    
+    6306: The hpxcxx script was broken such that it could only compile for _release r=hkaiser a=stevenrbrandt
+    
+    The hpxcxx script was broken such that it could only compile for _release. This modification makes it more robust in finding a compiled hpx installation and changes the 2 character flags to use -- instead of -.
+    
+    Fixes #
+    
+    ## Proposed Changes
+    
+      - Changes 2 character flags so that they use -- instead of -
+      - Fixes bug which prevents non-release versions from working
+      - Makes specifying the release optional
+      -  corrects relwithdebinfo to relwithdebuginfo
+    
+    ## Any background context you want to provide?
+    
+    ## Checklist
+    
+    Not all points below apply to all pull requests.
+    
+    - [ ] I have added a new feature and have added tests to go along with it.
+    - [ ] I have fixed a bug and have added a regression test.
+    - [ ] I have added a test using random numbers; I have made sure it uses a seed, and that random numbers generated are valid inputs for the tests.
+    
+    
+    Co-authored-by: Steven R. Brandt <sbrandt@cct.lsu.edu>
+
+[33mcommit 3b0dfcd4b39be58a009cc03a50653090a294383c[m
+Author: Steven R. Brandt <sbrandt@cct.lsu.edu>
+Date:   Tue Jul 25 13:30:42 2023 +0000
+
+    Add minsizerel
+
+[33mcommit 09eabc71da8f2a150b2e26efe3d52d4163e49072[m
+Merge: 96c3f4a61e 8d9a6288f0
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sun Jul 23 21:17:54 2023 +0000
+
+    Merge #6286
+    
+    6286: Simd helpers r=hkaiser a=Johan511
+    
+    simd helpers based on intel implementation
+    
+    
+    Co-authored-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+    Co-authored-by: Hari Hara Naveen S <johan511@medusa11.rostam.cct.lsu.edu>
+
+[33mcommit 96c3f4a61e794a10dab6840aa58089a063e797ae[m
+Merge: acc763d700 a31aa41476
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sun Jul 23 20:40:02 2023 +0000
+
+    Merge #6304
+    
+    6304: Fixing an integral type mismatch warning r=hkaiser a=hkaiser
+    
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 7fd80e2c5965e23899f7ddcd9dd0fa4a1ec1094b[m
+Author: Steven R. Brandt <sbrandt@cct.lsu.edu>
+Date:   Thu Jul 20 13:56:55 2023 +0000
+
+    The hpxcxx script was broken such that it could only compile for _release. This modification makes it more robust in finding a compiled hpx installation and changes the 2 character flags to use -- instead of -.
+
+[33mcommit a31aa41476ea3241bd74110909e444681bc9a097[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Wed Jul 19 09:05:23 2023 -0500
+
+    Fixing an integral type mismatch warning
+
+[33mcommit 8d9a6288f08660fb695b0d66590b5c02f0556fb9[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sun Jul 16 09:18:55 2023 -0500
+
+    cmake format
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 998e7732a2823472816bfed3722bf46a40a2eb9e[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sun Jul 16 09:15:00 2023 -0500
+
+    remove is_relocatable
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit acc763d700e37d40ac41943d8e43674bcf3c34d2[m
+Merge: 1d49cecf59 dcb5415768
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sun Jul 16 14:10:17 2023 +0000
+
+    Merge #6226
+    
+    6226: Re-enable dependency on segmented algorithms on CircleCI r=hkaiser a=hkaiser
+    
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+    Co-authored-by: Panos Syskakis <pansysk75@gmail.com>
+
+[33mcommit c8c29c93f776e7110a502b4b2e6f2b41362a42d2[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sun Jul 16 09:08:07 2023 -0500
+
+    merge changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 6e92ef958848ff9a5211c295dad86e584ecdb01a[m
+Merge: 3f4464ee24 1d49cecf59
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sun Jul 16 09:05:33 2023 -0500
+
+    merge changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 1d49cecf59c87f0c1520064da68c56347ac3da61[m
+Merge: 8b4f11ddfb 8f43bdee00
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu Jul 13 20:38:36 2023 -0500
+
+    Merge pull request #6300 from STEllAR-GROUP/khuck-patch-1
+    
+    Updating APEX default version to v2.6.3
+
+[33mcommit 8f43bdee001148481ac755967eedee0fc0dd323b[m
+Author: Kevin Huck <khuck@cs.uoregon.edu>
+Date:   Wed Jul 12 09:24:52 2023 -0700
+
+    Updating APEX default version to v2.6.3
+    
+    Updating APEX default version to v2.6.3
+
+[33mcommit 8b4f11ddfbb10503e6a34060c8144d883d352b9d[m
+Merge: 5b7fbc8ee0 3b626c45d9
+Author: StellarBot <contact@stellar-group.org>
+Date:   Mon Jul 10 11:33:28 2023 +0000
+
+    Merge #6264
+    
+    6264: hpx::is_trivially_relocatable trait implementation r=hkaiser a=isidorostsa
+    
+    This PR deals with the implementation of the `is_trivially_relocatable` trait. It offers the user an interface to declare their custom class as `trivially_relocatable` using the macro:
+    
+    `HPX_DECLARE_TRIVIALLY_RELOCATABLE(<class name>)`
+    
+    This assumes that trivially_copyable types are also trivially relocatable, following Folly's convention: https://github.com/facebook/folly/blob/ec297b748575e8ab86333899295715e6e85f909d/folly/Traits.h#L542
+    
+    Co-authored-by: isidorostsa <tsa.isidoros@gmail.com>
+    Co-authored-by: Isidoros <tsa.isidoros@gmail.com>
+
+[33mcommit 3b626c45d9b636ec97e81f1a264bd6f084978f46[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Sun Jul 9 17:11:28 2023 +0300
+
+    fix spelling error
+
+[33mcommit 5b7fbc8ee016a66c8c7108bac877f3f88290f7f3[m
+Merge: 907670c89c 0cfd70c530
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sat Jul 8 17:26:13 2023 +0000
+
+    Merge #6296
+    
+    6296: Fixing error message about use_guard_pages r=hkaiser a=hkaiser
+    
+    Fixes #6288
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 907670c89cffe4e8131531d916df5c230fce94ef[m
+Merge: 75faae5202 36f1c62d87
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat Jul 8 12:25:26 2023 -0500
+
+    Merge pull request #6280 from dimitraka/doc_updates
+    
+    Add TBB to HPX documentation in Migration Guide
+
+[33mcommit 75faae5202e52c582f371a56ade229d181abbf65[m
+Merge: 2e616702aa 9f0d330d69
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat Jul 8 12:25:12 2023 -0500
+
+    Merge pull request #6284 from G-071/add-multigpu-polling
+    
+    Add CUDA/HIP MultiGPU Event Polling
+
+[33mcommit 0cfd70c530dafc909925767c0a6dd2e880008446[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon Jul 3 08:41:51 2023 -0500
+
+    Fixing error message about use_guard_pages
+
+[33mcommit 2e616702aad51523160b6542eb0324768e8e90a6[m
+Merge: 8a949a7554 f61ac7d688
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sat Jul 8 15:43:59 2023 +0000
+
+    Merge #6292
+    
+    6292: update(lci pp): update the default version of LCI autofetch to v1.7.5 r=hkaiser a=JiakunYan
+    
+    LCI v1.7.5 improves its flexibility and usability. It also fixes various minor compilation warnings and errors.
+    
+    Co-authored-by: Jiakun Yan <jiakunyan1998@gmail.com>
+
+[33mcommit f61ac7d688193e52f029e3c033ac33c8b3a7bafb[m
+Author: Jiakun Yan <jiakunyan1998@gmail.com>
+Date:   Sun Jul 2 15:21:26 2023 -0500
+
+    Update the documentation for the LCI parcelport.
+
+[33mcommit 9f0d330d69770be4613908130dc4af94a5477779[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu Jul 6 12:51:50 2023 -0500
+
+    Fix inspect
+
+[33mcommit 7139cb18df90897ecf39a1345c30faeb950b9751[m
+Author: Isidoros <tsa.isidoros@gmail.com>
+Date:   Tue Jul 4 00:35:47 2023 +0300
+
+    Support templated classes (conditionally) (#4)
+    
+    * Support for incomplete types, and conditionality
+    
+    * Added variadic template macros and tests for them
+
+[33mcommit e547c24a9ba4cc95da13b40e320ce3ad81e3ee29[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu Jun 29 11:33:26 2023 -0500
+
+    Remove superfluous api call
+
+[33mcommit 4eb0b394e9999382fb355c055da44bc45087475e[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 23:17:03 2023 -0500
+
+    Fix format (again)
+
+[33mcommit 46b477a47e2f621932fe6b68214ead7d5640ec1e[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 22:57:46 2023 -0500
+
+    Cal setdevice when creating events on-demand
+
+[33mcommit 776d5dd27a410e2b30feb1adeafcde66013a3a21[m
+Author: Jiakun Yan <jiakunyan1998@gmail.com>
+Date:   Wed Jun 28 21:31:52 2023 -0500
+
+    update(lci pp): update the default version of LCI autofetch to v1.7.5
+
+[33mcommit 3999ecc8013ac35e01ca000ac7d1a813e2e124e8[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 17:30:42 2023 -0500
+
+    Fix test format
+
+[33mcommit 525ad21d1681da5f84eb149b9ba00608841bef98[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 17:13:50 2023 -0500
+
+    Fix some format issues / update file author lists
+
+[33mcommit a7e76e5602e1926b4fcada7c7fab15daf12b3062[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 17:12:27 2023 -0500
+
+    Add test for default device ID
+
+[33mcommit 8d7f6367ceff3e427243cbd9db2c0a7fe97d2483[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 16:51:55 2023 -0500
+
+    Fix assert (again)
+
+[33mcommit 707c0254e57bf10b00e84739a7d80afb2db45eee[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 16:08:11 2023 -0500
+
+    Add basic multi gpu polling test
+
+[33mcommit ee33c48def919c1cd7ffed7e9092b7ee451ccd01[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 28 14:18:32 2023 -0500
+
+    Put event pool singleton access definition in src
+
+[33mcommit 8a949a755414f5e908caeb4c03e1ba635e110b4f[m
+Merge: 98214696ff 3cc519f010
+Author: StellarBot <contact@stellar-group.org>
+Date:   Wed Jun 28 14:09:37 2023 +0000
+
+    Merge #6274
+    
+    6274: Improve the MPI parcelport and change the zero-copy threshold to 8192 r=hkaiser a=JiakunYan
+    
+    Improve the MPI parcelport:
+    - Replace the lock-based tag provider with an atomic variable
+    - Make the header message size dynamic
+    
+    Since the maximum size of the dynamic header message is set to be the zero-copy serialization threshold, I also changed it from 128B to 8192B. (The message size that MPI switches from eager protocol to rendezvous protocol is usually around 8K - 64K).
+    
+    Experiments: Octo-Tiger, max_level=6, SDSC Expanse, 32 nodes, 128 threads per node.
+    With `hpx.parcel.mpi.sendimm=0`, this PR improves the total execution time from 11.77s to 10.68s.
+    With `hpx.parcel.mpi.sendimm=1`, this PR improves the total execution time from ~60s to 11.72s.
+    
+    Co-authored-by: Jiakun Yan <jiakunyan1998@gmail.com>
+
+[33mcommit 3f4464ee242863b2ff54171404a75d5d56485c15[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Wed Jun 28 02:51:23 2023 -0500
+
+    removed unused variable
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit d267faecb3bcfac22f2a494f2ca45f7e2fa5216f[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Wed Jun 28 01:15:00 2023 -0500
+
+    inspect changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 971b24891276d025c47044c7019108566ef88bec[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Wed Jun 28 00:55:01 2023 -0500
+
+    cf
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 3f5fc2ea3b664b0dd81a13bab395e36f01c54a87[m
+Author: Hari Hara Naveen S <johan511@medusa11.rostam.cct.lsu.edu>
+Date:   Wed Jun 28 00:41:57 2023 -0500
+
+    added tests for simd_helper
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@medusa11.rostam.cct.lsu.edu>
+
+[33mcommit 72b67002bb754c0e1c7a270775861225e2e929f1[m
+Author: Hari Hara Naveen S <johan511@medusa11.rostam.cct.lsu.edu>
+Date:   Wed Jun 28 00:41:29 2023 -0500
+
+    added tests for simd_helper
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@medusa11.rostam.cct.lsu.edu>
+
+[33mcommit 3cc519f01040eb00d1517f3633a3877fb743c9c2[m
+Author: Jiakun Yan <jiakunyan1998@gmail.com>
+Date:   Mon Jun 5 00:33:31 2023 -0500
+
+    Improve the MPI parcelport and change the default zero-copy serialization threshold from 128 to 8192
+    
+    - Replace the lock-based tag provider with an atomic variable
+    - Make the header message size dynamic
+
+[33mcommit 98214696ffb224b8cb38fb088bca0374243c7bd4[m
+Merge: 04c8ebcb7d 23c6e5e8ee
+Author: StellarBot <contact@stellar-group.org>
+Date:   Tue Jun 27 20:27:55 2023 +0000
+
+    Merge #6290
+    
+    6290: Adding user supplied on_finalize r=hkaiser a=hkaiser
+    
+    This is needed for the hpxMP project
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 9b3388e92a463efd8da772d6be036a4a4b2101b9[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Tue Jun 27 14:54:41 2023 -0500
+
+    Remove superfluous cudaSetDevice
+
+[33mcommit d1f59531535125d330fb0ef4e48fe279a82f9a45[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Tue Jun 27 13:00:29 2023 -0500
+
+    Restore original device after init
+
+[33mcommit d1a81f0ea424eadd3ad732644cbe5adbbd745869[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Tue Jun 27 11:14:46 2023 -0500
+
+    Fix assert
+
+[33mcommit 23c6e5e8ee2b5cefe34c6018c0397216b21fe826[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon Jun 26 11:11:59 2023 -0500
+
+    Adding user supplied on_finalize
+
+[33mcommit df9496615985b54d3c4a41a401d030fba4b4210b[m
+Merge: cf60025b83 04c8ebcb7d
+Author: Gregor Daiß <G-071@users.noreply.github.com>
+Date:   Tue Jun 27 10:11:59 2023 -0500
+
+    Merge branch 'STEllAR-GROUP:master' into add-multigpu-polling
+
+[33mcommit a40c4a598dd336c39133b01d1731d3abeac34753[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Tue Jun 27 00:41:52 2023 -0500
+
+    missing definition in clang
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 5b3b5e280676331ddf30770ddd48871289f75940[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 26 23:43:39 2023 -0500
+
+    cf
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 4e2119bebf46f554f6b19df69bba71820562b6f5[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 26 23:23:30 2023 -0500
+
+    moved intel auto vectorization pragmas to different if block
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 04c8ebcb7de27190fe8490cb7d1ac6caf9f82d0c[m
+Merge: 7ad876c4d7 fa3585850e
+Author: StellarBot <contact@stellar-group.org>
+Date:   Mon Jun 26 20:51:58 2023 +0000
+
+    Merge #6289
+    
+    6289: Re-enable compiling with HPX_WITH_NETWORKING=OFF r=hkaiser a=hkaiser
+    
+    Fixes #6287
+    
+    - this adds the missing #include
+    
+    `@G-071` please verify whether this fixes your issues.
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit cf60025b83fc289f242d2a09420ef7b9ee84db5d[m
+Merge: b37f72a709 7ad876c4d7
+Author: Gregor Daiß <G-071@users.noreply.github.com>
+Date:   Mon Jun 26 13:37:58 2023 -0500
+
+    Merge branch 'STEllAR-GROUP:master' into add-multigpu-polling
+
+[33mcommit 7ad876c4d79aab119097bb413a8f175936fbb5d6[m
+Merge: 1cbb0d6e15 8ddacf9182
+Author: StellarBot <contact@stellar-group.org>
+Date:   Mon Jun 26 16:33:17 2023 +0000
+
+    Merge #6273
+    
+    6273: Improve LCI parcelport and new performance tests. r=hkaiser a=JiakunYan
+    
+    This PR contains several changes/optimizations to the LCI parcelport
+    
+    - Optimize the case of pre-posting one receive for new header messages.
+    - Add new progress type: pthread_worker.
+    - Add the option of using multiple pinned progress threads.
+    - Remove the option `two_device`.
+    - Remove the option `progress_thread_core`.
+    - Change the default configuration from `putva` to `putsendrecv`.
+    
+    Flyby: Add new performance tests: pingpong_performance2.
+    
+    
+    Co-authored-by: Jiakun Yan <jiakunyan1998@gmail.com>
+
+[33mcommit fa3585850eb68a91e08e14fb8f8aad5881f12a8e[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat Jun 24 11:06:32 2023 -0500
+
+    Re-enable compiling with HPX_WITH_NETWORKING=OFF
+
+[33mcommit bc8cb0a68dc035316f128b7d2885893356dc88c7[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 26 02:21:30 2023 -0500
+
+    fix bug
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 1cbb0d6e15dcb6a8bf841250d235f436fbe6a432[m
+Merge: 4aa2e7451f ede59e9e5d
+Author: StellarBot <contact@stellar-group.org>
+Date:   Fri Jun 23 11:46:05 2023 +0000
+
+    Merge #6277
+    
+    6277: add llvm/15, gcc/13 and boost/1.82 to jenkins r=hkaiser a=akheir
+    
+    
+    
+    ## Proposed Changes
+    
+      - Remove gcc/9 and clang/11 from jenkins builders
+      -  Add gcc/12 and clang/15 to the builders
+      - Add boost 1.82
+    
+    
+    
+    Co-authored-by: Alireza Kheirkhahan <kheirkhahan@gmail.com>
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit b37f72a7096ca0d614a239551446453a770dd777[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu Jun 22 21:31:50 2023 -0500
+
+    Add -1 default parameter for device auto-detection
+
+[33mcommit 7a5f5510abd19345440e650e4afa248979345eeb[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu Jun 22 21:31:16 2023 -0500
+
+    Switch to east const
+
+[33mcommit 8f794b3e7d9c4d1784c103a55f63e61bdc6f85e4[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Thu Jun 22 19:55:37 2023 -0500
+
+    cf
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 9d87ef47d5b5a5fffb67e9e5befcffd483353e98[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Thu Jun 22 19:47:36 2023 -0500
+
+    moved around macros for consistency
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 36f1c62d870af2c7f1e1325c7c5f29ee70143bbc[m
+Author: dimitraka <kadimitra@ece.auth.gr>
+Date:   Fri Jun 16 04:52:19 2023 +0200
+
+    Add tbb to hpx documentation
+
+[33mcommit ea0a5afe7d4e31db00ceaef87d577450151a28e9[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Thu Jun 22 16:07:33 2023 -0500
+
+    requested changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit ede59e9e5d0c98d782fa58598f31be7b44208047[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sun Jun 18 12:16:06 2023 -0500
+
+    Fixing various feature tests
+
+[33mcommit de02c753b1649b251f877d6a097c9169c517bb1e[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Wed Jun 14 14:51:44 2023 -0500
+
+    Fixing problems reported by gcc-13
+
+[33mcommit 146ec080298594ecc51f461c8450fbf6b4e6627e[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Wed Jun 14 14:21:34 2023 -0500
+
+    Fixing problems reported by clang-15
+
+[33mcommit 673155e508ad498938bbe2eb3a6790f796bf40f0[m
+Author: Alireza Kheirkhahan <kheirkhahan@gmail.com>
+Date:   Wed Jun 14 08:51:10 2023 -0500
+
+    add llvm/15, gcc/13 and boost/1.82 to jenkins
+
+[33mcommit 4aa2e7451f48e119d5143e3dd070415bf7159f82[m
+Merge: 22151516aa 7527a7954d
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Wed Jun 21 19:46:19 2023 -0500
+
+    Merge pull request #6272 from Johan511/#6252
+    
+    set thread name for linux
+
+[33mcommit 0af1fc6aedebabd46b1be308009d7623a00e7fa9[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Wed Jun 21 19:17:22 2023 -0500
+
+    requested changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 22151516aadde7b30c7ff43572dd5abcbe8af935[m
+Merge: d1042a9a29 2c946bcb07
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Wed Jun 21 17:35:42 2023 -0500
+
+    Merge pull request #5988 from STEllAR-GROUP/dgx_a100
+    
+    Adding CI configuration for DGX-A100 at LSU
+
+[33mcommit 1511e3802fd677433360563db7172f83c3fdae82[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Wed Jun 21 16:55:58 2023 -0500
+
+    unseq first n
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit d93ada24a541a0de315974d97676ce0b2bd95375[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 21 14:07:16 2023 -0500
+
+    Fix unused parameter warning
+
+[33mcommit 791cecd62be30d08209f6b0fd56efaa43ffa17d4[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed Jun 21 13:57:21 2023 -0500
+
+    Delete copy/move event pool constructors
+
+[33mcommit 2c946bcb079de3ee5a6c148ac6a4d990b1eda975[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu Jun 1 18:27:10 2023 -0500
+
+    Update CUDA architecture
+
+[33mcommit 7fb0e00a4f9f4ca6c8fbe9f22af1c6838338ca63[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu Aug 25 10:00:13 2022 -0500
+
+    Adding CI configuration for DGX-A100 at LSU
+
+[33mcommit e665a9e4a495c5c9271641c89ee0fa64edb379ed[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Tue Jun 20 09:13:33 2023 -0500
+
+    Fix asserts
+
+[33mcommit 6a24f16e8acd820c2a72a8f00f052a9f9c6e9fa4[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 18:55:41 2023 -0500
+
+    Add default device arguments
+
+[33mcommit bf85ef6cd635a5cb51e0f402050545feb46a3cfa[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 16:19:38 2023 -0500
+
+    Add missing format fix
+
+[33mcommit 12b3e3c3ac06a9981aebb740a935e95aad555bd4[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 16:10:37 2023 -0500
+
+    Fix format
+
+[33mcommit 64ecdfc791a3dfd44a8eecfcdfb9d164a2a2f322[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 15:56:03 2023 -0500
+
+    Add missing default value
+
+[33mcommit 25494a207169c46292cce1fdc4c06c5732fa92e6[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 15:22:04 2023 -0500
+
+    Cleanup
+
+[33mcommit e91c81a3b2b19df655729c7cb9c4788ffde27abb[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 14:57:15 2023 -0500
+
+    Detect number of GPUs
+
+[33mcommit 9f6dfcafeaea161cc8124bd9e2cc8e251c3ef0d7[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Mon Jun 19 14:04:16 2023 -0500
+
+    Initial hardcoded version
+
+[33mcommit 347cacbb84dc0137b9c72242f506025c5f8c90b4[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon Jun 19 22:51:20 2023 +0300
+
+    clang-format
+
+[33mcommit c7d3639bf652774500dd25986dfae0d520ccc0ca[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon Jun 19 19:42:06 2023 +0300
+
+    change include inside pointer_category
+
+[33mcommit 170b8dff634726a168729e16c983fc1bec732eac[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon Jun 19 19:10:36 2023 +0300
+
+    rename tests
+
+[33mcommit 8e39def26c4c7fe1b776d1faa1dd79a5207b9a13[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon Jun 19 18:38:05 2023 +0300
+
+    relocating relocation
+
+[33mcommit e6d03844406a0ada6d4624eec431eccde2d2df08[m
+Author: Isidoros <tsa.isidoros@gmail.com>
+Date:   Mon Jun 19 18:26:06 2023 +0300
+
+    Update libs/core/algorithms/include/hpx/algorithms/traits/is_relocatable.hpp
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 7527a7954d9420feb59144b7c45d9884a644ad1a[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sun Jun 18 08:23:30 2023 -0500
+
+    fixed inspect error
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit e44bc0706432a67ae8b28c7dccb83430c2870d9d[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sun Jun 18 05:22:05 2023 -0500
+
+    made requested changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 0e6ea47b4bc15f5ef99e2ec2acb211aa673575fc[m
+Author: Hari Hara Naveen S <johan511@medusa00.rostam.cct.lsu.edu>
+Date:   Sat Jun 17 19:33:48 2023 -0500
+
+    noexcept error fixed
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@medusa00.rostam.cct.lsu.edu>
+
+[33mcommit d1042a9a291e67400e8e31109a42629d30ae1f01[m
+Merge: 582f74c64a e4ea6d6c8d
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat Jun 17 12:06:13 2023 -0500
+
+    Merge pull request #6278 from STEllAR-GROUP/protect_shared_state
+    
+    Making sure the future's shared state doesn't go out of scope prematurely
+
+[33mcommit 582f74c64ae46996b1c15bbaf150d1ebac5a2576[m
+Merge: d0bea4763e 213fe3af0d
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat Jun 17 12:05:59 2023 -0500
+
+    Merge pull request #6279 from STEllAR-GROUP/error_names
+    
+    Re-expose error names
+
+[33mcommit d0bea4763e7cd24053cd5c573176ba425b815c04[m
+Merge: b75ec6f26a fef1c92558
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat Jun 17 12:05:50 2023 -0500
+
+    Merge pull request #6281 from STEllAR-GROUP/fixing_file_copy
+    
+    Creating directory for file copy
+
+[33mcommit b75ec6f26a7a424cc8b0e496ccc1d018551973b6[m
+Merge: 734d37f039 960a429557
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sat Jun 17 16:32:48 2023 +0000
+
+    Merge #6283
+    
+    6283: Consistently #include unistd.h for _POSIX_VERSION r=hkaiser a=hkaiser
+    
+    Fixes #6282
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit ecdbb491339af2e6675fc69172f8957d8e5a91e6[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sat Jun 17 03:13:33 2023 -0500
+
+    exposed set_thread_name to hpx::util
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit f807b406a19cbd0d96e9d16c112f038d9924a6a5[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sat Jun 17 02:56:17 2023 -0500
+
+    set_thread_name symbol not found fixed
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 9e367688962deb7b9248a82d79b80b9f9a3efa5a[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sat Jun 17 02:47:14 2023 -0500
+
+    requested changes
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 960a429557aa3582e1020148c8a1becb8ee45c6a[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Fri Jun 16 20:53:58 2023 -0500
+
+    Consistently #include unistd.h for _POSIX_VERSION
+
+[33mcommit fef1c92558ce3c33eba66c482f58a34ff636a9c8[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Fri Jun 16 08:14:57 2023 -0500
+
+    Creating directory for file copy
+
+[33mcommit 8ddacf918202b0f047e943d25ef9b7845cc6da0c[m
+Author: Jiakun Yan <jiakunyan1998@gmail.com>
+Date:   Sat May 27 12:48:58 2023 -0500
+
+    Improve LCI parcelport and new performance tests.
+    
+    Optimize the case of preposting one receive for new header messages.
+    Add new progress type: pthread_worker.
+    Add the option of using multiple rp progress threads.
+    Remove the option two_device.
+    Remove the option progress_thread_core.
+    Change the default configuration from putva to putsendrecv.
+    improve the sync_single completion manager
+    
+    Add new performance tests: pingpong_performance2.
+
+[33mcommit 577369c0b1751132c88e8d9b688c1752cbc79015[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Fri Jun 16 12:15:19 2023 -0500
+
+    tests for pthread_nameable_threads instead of nameable_threads in general
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 24a18903d104b92b51fd005a8be922b9a1cb8cce[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Thu Jun 15 23:53:37 2023 +0300
+
+    use East const convention
+
+[33mcommit 89cf296e83517e5d181fbb9ad68e40bc4310266b[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Thu Jun 15 23:51:36 2023 +0300
+
+    adapt old tests to hpx styleguide
+
+[33mcommit 734d37f039ca00338fff4711aba7804fb1e778a0[m
+Merge: ded9754832 b028109577
+Author: StellarBot <contact@stellar-group.org>
+Date:   Thu Jun 15 16:35:21 2023 +0000
+
+    Merge #6260
+    
+    6260: Add migration guide to manual r=hkaiser a=dimitraka
+    
+    Added instructions about OpenMP
+    
+    Co-authored-by: dimitraka <kadimitra@ece.auth.gr>
+
+[33mcommit 213fe3af0d481dfb8ce0e8c9125a5b4035cc4c54[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu Jun 15 10:36:54 2023 -0500
+
+    Re-expose error names
+
+[33mcommit e4ea6d6c8db20717bff66a1b58707c842e0f31f6[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu Jun 15 08:51:27 2023 -0500
+
+    Making sure the future's shared state doesn't go out of scope prematurely
+
+[33mcommit 3e9513ac5fc8e2f0370a3b3ba30fd9e66520b6ba[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Thu Jun 15 06:56:01 2023 -0500
+
+    spell check
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 6bff9924dafba3ea2b11c1d73971cff88c1e37ed[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Thu Jun 15 05:29:32 2023 -0500
+
+    added named thread support for bsd
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit ded9754832c2f4271de2a99c99bc3b1694cbd287[m
+Merge: abc4d37011 3476451166
+Author: StellarBot <contact@stellar-group.org>
+Date:   Wed Jun 14 16:41:35 2023 +0000
+
+    Merge #6267
+    
+    6267: Attempting to fix migration tests r=hkaiser a=hkaiser
+    
+    `@Pansysk75` would you mind verifying if this fixes the issues?
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 3476451166be48f02874c606a33ddecf2f63bf13[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Tue May 30 10:30:03 2023 -0500
+
+    Attempting to fix migration tests
+    
+    - flyby: adding missing API functions to abstract migration support types
+
+[33mcommit 4523750e6e8dc6df6d4cd6bcb20d46fef63e8c7a[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Sat Jun 10 04:09:05 2023 -0500
+
+    changes to follow HPX convention
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit abc4d37011aa58cc49b363cf7448ece20a0e9a53[m
+Merge: 343dd38a27 c8188394f9
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Fri Jun 9 10:39:20 2023 -0500
+
+    Merge pull request #6269 from STEllAR-GROUP/dependabot/github_actions/actions/checkout-3
+    
+    Bump actions/checkout from 2 to 3
+
+[33mcommit c8188394f9a777e186dd69bdca013418a0788ec9[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Fri Jun 9 15:18:12 2023 +0000
+
+    Bump actions/checkout from 2 to 3
+    
+    Bumps [actions/checkout](https://github.com/actions/checkout) from 2 to 3.
+    - [Release notes](https://github.com/actions/checkout/releases)
+    - [Changelog](https://github.com/actions/checkout/blob/main/CHANGELOG.md)
+    - [Commits](https://github.com/actions/checkout/compare/v2...v3)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: actions/checkout
+      dependency-type: direct:production
+      update-type: version-update:semver-major
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit 343dd38a27b1124971416aeef0aa7077065feeb9[m
+Merge: e8dc11b76b 5cc1c297d1
+Author: StellarBot <contact@stellar-group.org>
+Date:   Fri Jun 9 14:59:52 2023 +0000
+
+    Merge #6270
+    
+    6270: Bump jwlawson/actions-setup-cmake from 1.9 to 1.14 r=hkaiser a=dependabot[bot]
+    
+    Bumps [jwlawson/actions-setup-cmake](https://github.com/jwlawson/actions-setup-cmake) from 1.9 to 1.14.
+    <details>
+    <summary>Release notes</summary>
+    <p><em>Sourced from <a href="https://github.com/jwlawson/actions-setup-cmake/releases">jwlawson/actions-setup-cmake's releases</a>.</em></p>
+    <blockquote>
+    <h2>v1.14.0</h2>
+    <h2>What's Changed</h2>
+    <ul>
+    <li>Bump minimatch from 3.0.4 to 3.1.2 by <a href="https://github.com/dependabot"><code>`@​dependabot</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/54">jwlawson/actions-setup-cmake#54</a></li>
+    <li>Bump json5 from 2.2.0 to 2.2.3 by <a href="https://github.com/dependabot"><code>`@​dependabot</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/55">jwlawson/actions-setup-cmake#55</a></li>
+    <li>Always use standard MacOS package to suppress warning by <a href="https://github.com/jwlawson"><code>`@​jwlawson</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/56">jwlawson/actions-setup-cmake#56</a></li>
+    </ul>
+    <p><strong>Full Changelog</strong>: <a href="https://github.com/jwlawson/actions-setup-cmake/compare/v1...v1.14.0">https://github.com/jwlawson/actions-setup-cmake/compare/v1...v1.14.0</a></p>
+    <h2>v1.13.1</h2>
+    <h2>What's Changed</h2>
+    <ul>
+    <li>Bump qs from 6.10.1 to 6.11.0 by <a href="https://github.com/dependabot"><code>`@​dependabot</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/53">jwlawson/actions-setup-cmake#53</a></li>
+    </ul>
+    <p><strong>Full Changelog</strong>: <a href="https://github.com/jwlawson/actions-setup-cmake/compare/v1...v1.13.1">https://github.com/jwlawson/actions-setup-cmake/compare/v1...v1.13.1</a></p>
+    <h2>v1.13.0</h2>
+    <h2>What's Changed</h2>
+    <ul>
+    <li>Update to use node16 by <a href="https://github.com/jwlawson"><code>`@​jwlawson</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/49">jwlawson/actions-setup-cmake#49</a></li>
+    </ul>
+    <p><strong>Full Changelog</strong>: <a href="https://github.com/jwlawson/actions-setup-cmake/compare/v1.12.1...v1.13.0">https://github.com/jwlawson/actions-setup-cmake/compare/v1.12.1...v1.13.0</a></p>
+    <h2>v1.12.1</h2>
+    <h2>What's Changed</h2>
+    <ul>
+    <li>Bump minimist from 1.2.5 to 1.2.6 by <a href="https://github.com/dependabot"><code>`@​dependabot</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/45">jwlawson/actions-setup-cmake#45</a></li>
+    <li>Bump node-fetch from 2.6.4 to 2.6.7 by <a href="https://github.com/dependabot"><code>`@​dependabot</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/46">jwlawson/actions-setup-cmake#46</a></li>
+    <li>Bump <code>`@​actions/core</code>` from 1.5.0 to 1.9.1 by <a href="https://github.com/dependabot"><code>`@​dependabot</code></a>` in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/47">jwlawson/actions-setup-cmake#47</a></li>
+    </ul>
+    <p><strong>Full Changelog</strong>: <a href="https://github.com/jwlawson/actions-setup-cmake/compare/v1.12...v1.12.1">https://github.com/jwlawson/actions-setup-cmake/compare/v1.12...v1.12.1</a></p>
+    <h2>v1.12</h2>
+    <h2>What's Changed</h2>
+    <ul>
+    <li>Allow a user to specify the cmake-version as <code>latest</code> instead of an empty string to aid clarity in workflow files in <a href="https://redirect.github.com/jwlawson/actions-setup-cmake/pull/42">jwlawson/actions-setup-cmake#42</a></li>
+    </ul>
+    <p><strong>Full Changelog</strong>: <a href="https://github.com/jwlawson/actions-setup-cmake/compare/v1.11...v1.12">https://github.com/jwlawson/actions-setup-cmake/compare/v1.11...v1.12</a></p>
+    <h2>v1.11</h2>
+    <p>No release notes provided.</p>
+    <h2>v1.10</h2>
+    <p>No release notes provided.</p>
+    </blockquote>
+    </details>
+    <details>
+    <summary>Commits</summary>
+    <ul>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/edf711ecd65812f5af69b82925ec0ea77cb85be6"><code>edf711e</code></a> Always use standard MacOS package to suppress warning (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/56">#56</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/a14d8d9dd1c04c07c6632760ccece2592540a732"><code>a14d8d9</code></a> Bump json5 from 2.2.0 to 2.2.3 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/55">#55</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/318fb19022313117d84478c697e8d93290112650"><code>318fb19</code></a> Bump minimatch from 3.0.4 to 3.1.2 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/54">#54</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/65b272e1213f99771fbba0c237e0b3312270e0c9"><code>65b272e</code></a> Bump qs from 6.10.1 to 6.11.0 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/53">#53</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/4f73d30c2fc44a9466a3ed890fb8db7a7b554302"><code>4f73d30</code></a> Update to use node16 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/49">#49</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/48fb828056dab1f20e7f97159f2711efb1742ba1"><code>48fb828</code></a> Bump <code>`@​actions/core</code>` from 1.5.0 to 1.9.1 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/47">#47</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/84666ef341435acdbc2eeac5d5be6f5e8bf40976"><code>84666ef</code></a> Bump node-fetch from 2.6.4 to 2.6.7 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/46">#46</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/da0a604b78768909c1eb3898becefc7db4d2926b"><code>da0a604</code></a> Bump minimist from 1.2.5 to 1.2.6 (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/45">#45</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/884cf5c591490f86b788d68b6f585f26235578d6"><code>884cf5c</code></a> Fix version to actual version number (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/43">#43</a>)</li>
+    <li><a href="https://github.com/jwlawson/actions-setup-cmake/commit/e95fd2ae12c1c7573cd42bfc55efd310042b719e"><code>e95fd2a</code></a> Add 'latest' version alias (<a href="https://redirect.github.com/jwlawson/actions-setup-cmake/issues/42">#42</a>)</li>
+    <li>Additional commits viewable in <a href="https://github.com/jwlawson/actions-setup-cmake/compare/v1.9...v1.14">compare view</a></li>
+    </ul>
+    </details>
+    <br />
+    
+    
+    [![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=jwlawson/actions-setup-cmake&package-manager=github_actions&previous-version=1.9&new-version=1.14)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
+    
+    Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting ``@dependabot` rebase`.
+    
+    [//]: # (dependabot-automerge-start)
+    [//]: # (dependabot-automerge-end)
+    
+    ---
+    
+    <details>
+    <summary>Dependabot commands and options</summary>
+    <br />
+    
+    You can trigger Dependabot actions by commenting on this PR:
+    - ``@dependabot` rebase` will rebase this PR
+    - ``@dependabot` recreate` will recreate this PR, overwriting any edits that have been made to it
+    - ``@dependabot` merge` will merge this PR after your CI passes on it
+    - ``@dependabot` squash and merge` will squash and merge this PR after your CI passes on it
+    - ``@dependabot` cancel merge` will cancel a previously requested merge and block automerging
+    - ``@dependabot` reopen` will reopen this PR if it is closed
+    - ``@dependabot` close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually
+    - ``@dependabot` ignore this major version` will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)
+    - ``@dependabot` ignore this minor version` will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)
+    - ``@dependabot` ignore this dependency` will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)
+    
+    
+    </details>
+    
+    Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+[33mcommit 80efd16125c03faf9f9fd635a2590e2ec453fc34[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Wed Jun 7 01:16:25 2023 -0500
+
+    added license info
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 04483d09ab0c940e2eac8c1b2c2ca546ecd7a9e3[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Tue Jun 6 17:47:59 2023 -0500
+
+    added newline
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 506b92a70a83176d4b029a547650c97095c0d4d0[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Tue Jun 6 17:29:52 2023 -0500
+
+    include header file
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 7ca1e060d3621fb70968d08e1215f1febc3204c1[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Tue Jun 6 16:55:34 2023 -0500
+
+    fix unused
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit eed611c919a88ba01184d158e367e5a8a5de23af[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Tue Jun 6 16:46:10 2023 -0500
+
+    added config test for set_name_thread
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 986c4034e95a7dfc166102fd43174daf87ba7927[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 5 02:55:17 2023 -0500
+
+    fix
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit f3ba2c5dabab8a29db3da93fb356fe70e2a63909[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 5 02:48:50 2023 -0500
+
+    unwinwinding error _try
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 669a436dba07a695359ea9296b9d2b6df089fae1[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 5 02:39:20 2023 -0500
+
+    added hpx_core_export
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 3f1847e631b1bbc69bb988803549f3876a4c71ea[m
+Author: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+Date:   Mon Jun 5 02:22:52 2023 -0500
+
+    set thread name for linux
+    
+    Signed-off-by: Hari Hara Naveen S <johan511@rostam1.rostam.cct.lsu.edu>
+
+[33mcommit 5cc1c297d1fd1dec5e34948f615c62bc8e89199b[m
+Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+Date:   Sun Jun 4 15:08:49 2023 +0000
+
+    Bump jwlawson/actions-setup-cmake from 1.9 to 1.14
+    
+    Bumps [jwlawson/actions-setup-cmake](https://github.com/jwlawson/actions-setup-cmake) from 1.9 to 1.14.
+    - [Release notes](https://github.com/jwlawson/actions-setup-cmake/releases)
+    - [Commits](https://github.com/jwlawson/actions-setup-cmake/compare/v1.9...v1.14)
+    
+    ---
+    updated-dependencies:
+    - dependency-name: jwlawson/actions-setup-cmake
+      dependency-type: direct:production
+      update-type: version-update:semver-minor
+    ...
+    
+    Signed-off-by: dependabot[bot] <support@github.com>
+
+[33mcommit e8dc11b76bc2c12316861b61c4601221ea88a1d3[m
+Merge: 3d95d662eb cc6faa2726
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sun Jun 4 14:51:26 2023 +0000
+
+    Merge #6268
+    
+    6268: Move dependabot.yml into correct directory r=hkaiser a=hkaiser
+    
+    See https://stackoverflow.com/questions/69446872/dependabot-error-githubl1-no-event-triggers-defined-in-on. Fixes issues caused by #6265
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 9e1d723b5dbe98c201020998a7177fdef0b97515[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Fri Jun 2 11:45:57 2023 +0300
+
+    misspelled "primitive"
+
+[33mcommit cc6faa27263941aa999437207c17da06c5c5ee6d[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu Jun 1 19:17:21 2023 -0500
+
+    Move dependabot.yml into correct directory
+
+[33mcommit 5e7bb7abf4886318d5df1e174f0a0724ecd3cc75[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Fri Jun 2 00:33:53 2023 +0300
+
+    non_trivial_but_trivially_copyable correction
+
+[33mcommit b028109577c0c5bdf26de5da1289733a3d05de82[m
+Author: dimitraka <kadimitra@ece.auth.gr>
+Date:   Thu Jun 1 22:38:15 2023 +0200
+
+    Add openmp tasks migration guide
+
+[33mcommit 3d95d662eb6879fccfbc8090377e58674fbc91a7[m
+Merge: d40564da22 6e28071d2b
+Author: StellarBot <contact@stellar-group.org>
+Date:   Thu Jun 1 15:58:20 2023 +0000
+
+    Merge #6248
+    
+    6248: Fix CUDA/HIP Jenkins pipelines  r=hkaiser a=G-071
+    
+    This PR aims to fix the unstable CUDA/HIP tests.
+    
+    Changes so far:
+    - Fixes CUDA architectures for Jenkins nodes
+    - Exclude faulty Jenkins node for now (bahram: listed as V100 GPU node but does not list any GPUs according to nvidia-smi)
+    - Allow Jenkins HIP builds with warnings (in order to run tests despite of the warnings, just like the CUDA tests already do)
+    - I further looked into #5799 again to see if the new compilers and cuda versions made any difference. Unfortunately not, using gcc/12 and cuda/12 compilation still fails with:
+    `'cudafe++' died due to signal 11 (Invalid memory reference)`
+    I adapted the guards in the failing examples accordingly (to also skip the tests with newer cuda versions)
+    
+    The PR is a bit of a work-in-progress as I imagine it will take a few iterations to get everything right. That being said, let's see if the current changes already help and trigger the Jenkins tests!
+    
+    Co-authored-by: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+
+[33mcommit d40564da22a8da8d46aa9a0325bc2bbe46d7e2bd[m
+Merge: 8977829348 d12d9b1d7a
+Author: StellarBot <contact@stellar-group.org>
+Date:   Thu Jun 1 13:56:10 2023 +0000
+
+    Merge #6266
+    
+    6266: Attempt to resolve occasional hang in run_loop r=hkaiser a=hkaiser
+    
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 863e5a61f6f2984d7fafb108fdc488bbb940cabc[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Wed May 31 00:39:51 2023 +0300
+
+    clang-format
+
+[33mcommit 6caee74100f5cde56f8e795efca6b8f2576906e3[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Wed May 31 00:39:19 2023 +0300
+
+    Added recomended tests
+
+[33mcommit c2acd4fe869232ce211a4db7cc564e092cf9f1b3[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Tue May 30 20:03:30 2023 +0300
+
+    CamelCase to snake_case
+
+[33mcommit 689a1fc556b1fc2ec7b0b0682b5b476a510d8b31[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Tue May 30 20:03:30 2023 +0300
+
+    CamelCase to snake_case
+
+[33mcommit 1b3923829d2a58809488ba8376dbf8eabe1be7ef[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Tue May 30 17:52:11 2023 +0300
+
+    remove typename
+
+[33mcommit 897782934884f06975274db76029fa82cc01048e[m
+Merge: b485c2eb31 826021f326
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Tue May 30 08:25:17 2023 -0500
+
+    Merge pull request #6265 from inanc-can/master
+    
+    Create dependabot.yml
+
+[33mcommit d12d9b1d7ac47c69da1ad35606ee4d40d90de73b[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon May 29 13:42:58 2023 -0500
+
+    Attempt to resolve occasional hang in run_loop
+    
+     -flyby: increase timeout for segmented_algorithms tests on CirclCI
+
+[33mcommit b485c2eb31db66b22e5fb387b4802a0359c63755[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon May 29 19:48:52 2023 -0500
+
+    Fixing codacy errors
+
+[33mcommit 4ad4468378ac1e4c963f6d7e50d3b4814c117540[m
+Merge: 7efb16b824 9bb3f17fad
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon May 29 17:48:56 2023 -0500
+
+    Merge pull request #6250 from STEllAR-GROUP/windows_gcc_issues
+    
+     Resolve gcc problems on Windows
+
+[33mcommit 7efb16b82426a2dcf9c213aed2a082468c206e6b[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon May 29 16:28:18 2023 -0500
+
+    Adding first draft of security policy for the HPX project
+
+[33mcommit 4221069967fafb9b24ccf60fa2f90702b6342982[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon May 29 22:50:05 2023 +0300
+
+    use existing `std::bool_constant`
+
+[33mcommit 826021f32622cabd2b690bf33da01b919a00220e[m
+Author: İnanç CAN <55583718+inanc-can@users.noreply.github.com>
+Date:   Mon May 29 16:52:54 2023 +0200
+
+    Update dependabot.yml
+    
+    Added license, copyright, and SPDX entry
+
+[33mcommit d176c7114df86958637734b43ffdcbedb090fe4a[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Mon May 29 09:52:53 2023 -0500
+
+    Fixing MPI parcelport
+
+[33mcommit 76dcad2fe949f804ad8c90de7816e855d42c82f1[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon May 29 17:41:40 2023 +0300
+
+    newline in the end
+
+[33mcommit a19d8887e07ca4b0246edabdf3045ed6496449a2[m
+Author: İnanç CAN <55583718+inanc-can@users.noreply.github.com>
+Date:   Mon May 29 15:50:32 2023 +0200
+
+    Create dependabot.yml
+    
+    Dependabot is a valuable tool designed to assist in maintaining up-to-date dependencies. It achieves this by automatically generating pull requests whenever a new version of a dependency becomes available, ensuring a seamless integration without any disruptive changes.
+    
+    In this pull request, the inclusion of the dependabot.yml file is crucial. This file is responsible for configuring version updates specifically for GitHub Actions, and it directs the updates to the .github/workflows directory.
+    
+    To fully utilize Dependabot, a maintainer may need to enable it through the following steps: navigate to the settings section, then access the Code security and analysis options. Within this section, there will be three buttons that need to be enabled to activate Dependabot's functionalities.
+
+[33mcommit 89d10ff4439481089486f2c756eea3f60a339efa[m
+Merge: 743e7efdaf 4632474652
+Author: StellarBot <contact@stellar-group.org>
+Date:   Mon May 29 13:00:51 2023 +0000
+
+    Merge #6262
+    
+    6262: Fixing wrong command line options in local command line handling r=hkaiser a=hkaiser
+    
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 442972a008bebe556b54e3a143ab8ff51c7871e4[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon May 29 15:47:27 2023 +0300
+
+    clang-format
+
+[33mcommit f63342b19d65091682c8a2af760757481c514737[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon May 29 15:45:45 2023 +0300
+
+    Testing triviallyCopyable and not cases
+
+[33mcommit 743e7efdaf40a194499b3375b3ce55a6ec1bea2c[m
+Merge: f1f707863b 5c195a8b01
+Author: StellarBot <contact@stellar-group.org>
+Date:   Mon May 29 12:44:09 2023 +0000
+
+    Merge #6263
+    
+    6263: Adding support for reading json configuration files for command line options r=hkaiser a=hkaiser
+    
+    Fixes: #6261
+    
+    This new feature is enabled by adding the `-DHPX_COMMAND_LINE_HANDLING_WITH_JSON_CONFIGURATION_FILES=On` configuration constant to the CMake command line. The parsing of the JSON file is performed using the JSON library available here: https://github.com/nlohmann/json. Add `-DHPX_WITH_FETCH_JSON=On` to automatically fetch and install it with HPX.
+    
+    Note: JSON configuration files must have the file extension `.json`. They can be passed to any HPX application either as:
+    ```
+    ./app `@some_config_data.json`
+    ```
+     or by using the explicit `--hpx:options-file` command line option, e.g.
+    ```
+    ./app --hpx:options-file=some_config_data.json
+    ```
+    
+    This extracts key/value pairs from arbitrary levels in the JSON file, composing the option names from the keys. For instance:
+    ```
+    {
+        "option1": 42,
+        "option2": 42.0,
+        "option3": [ 1, 2, 3 ],
+        "option4": true
+        "base": {
+            "option5": 42
+        }
+    }
+    ```
+    would be equivalent to writing:
+    ```
+    ./app --option1=42 --option2=42.0 --option3=1 --option3=2 --option3=3 --option4 --base:option5=42
+    ```
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 0b46dd64dfddf831dac9eb65f06409aa5b91ae0b[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Mon May 29 14:50:37 2023 +0300
+
+    trivially copyable covers poitners, iterators are removed
+
+[33mcommit 5c195a8b01d830c16e09096358c43bad87161ade[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sun May 28 08:02:16 2023 -0500
+
+    Supported nested JSON objects
+
+[33mcommit 0603265f338b787dc633e3cbc6f61b36154ec7f2[m
+Author: Isidoros <tsa.isidoros@gmail.com>
+Date:   Mon May 29 00:21:23 2023 +0300
+
+    Update libs/core/algorithms/include/hpx/algorithms/traits/is_trivially_relocatable.hpp
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit c8ff8dc071da014d848cb3eacb164c9cd7c4722a[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Sun May 28 17:15:05 2023 +0300
+
+    clang-formated
+
+[33mcommit 1db200e08b37ecaf5ad0b1b767e9563c6489d446[m
+Author: Isidoros <tsa.isidoros@gmail.com>
+Date:   Sun May 28 17:11:13 2023 +0300
+
+    typo in cmake
+
+[33mcommit 9f2c184190481a7d847f304652aabb56b0a0491d[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Sun May 28 16:53:11 2023 +0300
+
+    add trait and test to cmake
+
+[33mcommit c435377fa8ad11d08033d7d0a2a397d8fe7f2238[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Sun May 28 16:41:59 2023 +0300
+
+    trivially_relocatable unit tests
+
+[33mcommit a179c522d8b6476589881c352e2eab44b89c57cd[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Sun May 28 16:41:51 2023 +0300
+
+    Trivially relocatable as a subset of trivially_copyable
+
+[33mcommit 72331314d9c4f2831999f20038c623b745226309[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat May 27 18:07:58 2023 -0500
+
+    Adding support for reading json configuration files for command line options
+    
+    - flyby: fixing application options in configuration files
+
+[33mcommit f1f707863b761fb8f008c92f475356df37ce1714[m
+Merge: d854c09d66 203a832683
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sat May 27 14:56:15 2023 +0000
+
+    Merge #6249
+    
+    6249: Implement the send immediate optimization for the MPI parcelport. r=hkaiser a=JiakunYan
+    
+    Users can use the option `hpx.parcel.mpi.sendimm` to enable and disable it.
+    
+    When HPX wants to send a parcel, the default behavior is to enqueue this parcel into the parcel queue of the target locality, dequeue all the parcels from that parcel queue, aggregate them, and pass them in one `parcel_buffer` structure. It will also try to get an existing connection from the connection cache. These two data structures are protected by locks and can be a source of thread contention.
+    
+    With the send immediate optimization, the parcelport will bypass the connection cache and parcel queues and directly send the parcel.
+    
+    This option is mainly for research purposes. The default is off since it will slow down the MPI parcelport in most cases.
+    
+    Co-authored-by: Jiakun Yan <jiakunyan1998@gmail.com>
+
+[33mcommit 9bb3f17fad775808f5e9b5209443d0cb35ca65f5[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sun May 21 14:45:17 2023 -0500
+
+    Remove duplicate headers, instead generate those on demand
+
+[33mcommit 46324746525a88255100f27da2249ae768ec10a3[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat May 27 07:56:07 2023 -0500
+
+    Fixing wrong command line options in local command line handling
+
+[33mcommit 1f88873a58924a76deff3261c2c3bd62026410d6[m
+Author: isidorostsa <tsa.isidoros@gmail.com>
+Date:   Sat May 27 14:36:51 2023 +0300
+
+    move_constructible impies destructible
+
+[33mcommit 6e28071d2b50ccc2b02b316332fdffe81f3fccb8[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Fri May 26 23:50:53 2023 -0500
+
+    Test excluding troublesome hip alorithms test
+
+[33mcommit b4b3b314ffa18a7118abf3275b0a2047ab4ae712[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Fri May 26 23:43:10 2023 -0500
+
+    Revert "Increase test timeout"
+    
+    This reverts commit 087074ac3429e67004b70efcd74e74531250825e.
+
+[33mcommit d854c09d669d595c5fa2cf92db1d966342d58eed[m
+Merge: 5b092fe38c 6f044d44da
+Author: StellarBot <contact@stellar-group.org>
+Date:   Fri May 26 21:11:43 2023 +0000
+
+    Merge #6257
+    
+    6257: Cmake Tests: Delete operator check for size_t arg r=hkaiser a=SAtacker
+    
+    - Clang fails to recognize the global delete operator which has 2 arguments the second one being std::size_t
+    - Reference - https://godbolt.org/z/q1hMrfKjv
+    - Fixes https://github.com/STEllAR-GROUP/hpx/issues/6246
+    
+    Signed-off-by: Shreyas Atre <shreyasatre16@gmail.com>
+    
+    
+    
+    
+    Co-authored-by: Shreyas Atre <shreyasatre16@gmail.com>
+    Co-authored-by: Shreyas Atre <61797109+SAtacker@users.noreply.github.com>
+
+[33mcommit 6f044d44da0a771f88e362bfb3d28aa0174fb975[m
+Author: Shreyas Atre <shreyasatre16@gmail.com>
+Date:   Sat May 27 00:37:51 2023 +0530
+
+    Fix clang format formatting for Clang format 11
+    
+    Signed-off-by: Shreyas Atre <shreyasatre16@gmail.com>
+
+[33mcommit d83b4a33f48998f6f1190a6088489a9f74ba9d33[m
+Author: Shreyas Atre <shreyasatre16@gmail.com>
+Date:   Fri May 26 23:36:48 2023 +0530
+
+    Fix inspect issues: Add newline to the added test
+    
+    Signed-off-by: Shreyas Atre <shreyasatre16@gmail.com>
+
+[33mcommit 5b092fe38c5991a1343a41b24af7ceb4021e90c2[m
+Merge: 691dfc546e 973cb1bd18
+Author: StellarBot <contact@stellar-group.org>
+Date:   Fri May 26 12:22:19 2023 +0000
+
+    Merge #6258
+    
+    6258: Rewriting wait_some to circumvent data races causing hangs r=hkaiser a=hkaiser
+    
+    - flyby: fixing possible race in latch
+    
+    `@m-diers` Could you please try this patch to see if it fixes your issue?
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 409ec40c9d793e71faa2b39e5ad20fb019c55540[m
+Author: Shreyas Atre <61797109+SAtacker@users.noreply.github.com>
+Date:   Fri May 26 12:48:52 2023 +0530
+
+    Add maybe_unused attribute
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 973cb1bd18c975e0fb25a5e8c10343280eaea7bd[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu May 25 14:05:59 2023 -0500
+
+    Rewriting wait_some to circumvent data races causing hangs
+
+[33mcommit 416a7f8b0ed5b3dce4ed6096334919e0d494ae54[m
+Author: dimitraka <kadimitra@ece.auth.gr>
+Date:   Thu May 25 22:58:40 2023 +0200
+
+    Add migration guide to manual
+
+[33mcommit 2cd4fe06776b63aeb3bcfd216d248c2c64bfa41f[m
+Author: Shreyas Atre <shreyasatre16@gmail.com>
+Date:   Thu May 25 23:55:20 2023 +0530
+
+    Cmake Tests: Delete operator check for size_t arg
+    
+    - Clang fails to recognize the global delete operator which has 2 arguments the second one being std::size_t
+    
+    Signed-off-by: Shreyas Atre <shreyasatre16@gmail.com>
+
+[33mcommit 691dfc546e1221666f3d646505021d41a627d78c[m
+Merge: 46c0826dbd fca6348a98
+Author: StellarBot <contact@stellar-group.org>
+Date:   Thu May 25 16:44:12 2023 +0000
+
+    Merge #6239
+    
+    6239: Fix `Optimizing HPX applications` page of Manual r=hkaiser a=dimitraka
+    
+    The content of the tables used to overlap with the side bar of the documentation making it impossible to actually read the information. These extended tables were split to smaller tables which are now clear and readable.
+    
+    With this change there is no need to include anchors to the table rows. For each counter there is a separate table, so one can just use the reference to the table in order to refer to a specific counter.
+    
+    
+    Co-authored-by: dimitraka <kadimitra@ece.auth.gr>
+
+[33mcommit 46c0826dbdc77b1a9e6b32975a23da47a8d60366[m
+Merge: 45f5e92750 85f4946f0f
+Author: StellarBot <contact@stellar-group.org>
+Date:   Wed May 24 23:02:40 2023 +0000
+
+    Merge #6256
+    
+    6256: Fix nvcc/gcc-10 (Octo-Tiger) compilation issue  r=hkaiser a=G-071
+    
+    Using HPX 1.9.0, the Octo-Tiger compilation (using just CUDA, not Kokkos) with gcc+nvcc fails due to an internal nvcc error pointing to loop.hpp within HPX:
+    
+    ```
+    build/hpx/include/hpx/parallel/util/loop.hpp(216): internal error: assertion failed at: "cp_gen_be.c", line 22617 in gen_variable_decl
+    
+    1 catastrophic error detected in the compilation of "/src/octotiger/src/unitiger/hydro_impl/flux_cuda_kernel.cpp".
+    Compilation aborted.
+    nvcc error   : 'cudafe++' died due to signal 6
+    nvcc error   : 'cudafe++' core dumped
+    ```
+    
+    That is with using g++10 and CUDA 11.5.
+    While using newer versions of g++/CUDA fix this, it would be nice to not lose g++-10 support over this.
+    
+    Interestingly, simply providing nvcc with more information about the type seems to help as well, hence this PR to resolve the issue without losing support for the older compiler.
+    
+    
+    
+    
+    
+    Co-authored-by: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+
+[33mcommit 85f4946f0f4dffe85486e5f9e42279dce50106f3[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Wed May 24 15:50:15 2023 -0500
+
+    Give NVCC more information about the type
+
+[33mcommit 087074ac3429e67004b70efcd74e74531250825e[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Tue May 23 23:46:18 2023 -0500
+
+    Increase test timeout
+
+[33mcommit 1e84947cca6522221caf05f4d5982c10fbe66643[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Tue May 23 14:25:16 2023 -0500
+
+    Revert "Temporarily switch to rocm/4"
+    
+    This reverts commit 71c8ac34e334cabdd8bf4b9f872eaa79b8f7f7eb.
+
+[33mcommit 5313b8d25a5fd154f57fa960928e473e00095df1[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu May 18 21:03:40 2023 -0500
+
+    Resolve gcc problems on Windows
+    
+    - flyby: resolve winsock2.h warnings on windows
+    - flyby: add CI builder for gcc/mingw on Windows
+
+[33mcommit 45f5e92750374218745a6d404bb7034b56002e3f[m
+Merge: 1c14bdcb93 5b5c7761cc
+Author: StellarBot <contact@stellar-group.org>
+Date:   Mon May 22 14:00:50 2023 +0000
+
+    Merge #6253
+    
+    6253: Modernize set_thread_name on Windows r=hkaiser a=hkaiser
+    
+    This changes setting thread names on Windows such that the name is visible in the debugger even if the process was attached and not started by VS.
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 1c14bdcb9397777aa668f8a8d40b6be7270ebf3a[m
+Merge: e201746ed9 848ac3b8c0
+Author: StellarBot <contact@stellar-group.org>
+Date:   Sun May 21 22:23:06 2023 +0000
+
+    Merge #6251
+    
+    6251: Attempting to fix problems in barrier causing hangs r=hkaiser a=hkaiser
+    
+    Attempts fixing #6245
+    
+    
+    Co-authored-by: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+
+[33mcommit 5b5c7761ccc04b200cdc5e563a53cf84dd3bfe65[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat May 20 10:22:38 2023 -0500
+
+    Modernize set_thread_name on Windows
+
+[33mcommit 848ac3b8c0227a5e9b36b00743f8b5b6a8b00eac[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Sat May 20 08:47:21 2023 -0500
+
+    Attempting to fix problems in barrier causing hangs
+
+[33mcommit 203a8326835e6a54734f58f95c34de491fd6091a[m
+Author: Jiakun Yan <jiakunyan1998@gmail.com>
+Date:   Sat May 13 00:45:31 2023 -0500
+
+    New option hpx.parcel.mpi.sendimm: implement the send immediate optimization for the MPI parcelport.
+    
+    Default is OFF, since it will slow down the MPI parcelport.
+
+[33mcommit 71c8ac34e334cabdd8bf4b9f872eaa79b8f7f7eb[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu May 18 19:04:02 2023 -0500
+
+    Temporarily switch to rocm/4
+    
+    As all rocm/5 modules are currently broken on the machine
+
+[33mcommit e201746ed93978f2a95e08e7152dcece2a35590b[m
+Merge: 31fc8b9f16 73a49531f2
+Author: StellarBot <contact@stellar-group.org>
+Date:   Thu May 18 22:31:03 2023 +0000
+
+    Merge #6241
+    
+    6241: LCI parcelport: Refactor, add more variants, zero copy receives. r=hkaiser a=JiakunYan
+    
+    Add more variants of LCI parcelport (mainly for research purposes).
+    
+    Add support for the zero-copy receive optimization.
+    
+    - `hpx.parcel.lci.protocol`: Determine the communication primitives to use.
+        - `sendrecv`: Only use LCI send and recv.
+        - `putsendrecv`: Use LCI put, send, and recv.
+        - `putva`: Use LCI put iovec.
+    - `hpx.parcel.lci.comp_type`: Determine the completion mechanism to use.
+        - `sync`: Use LCI synchronizer.
+        - `queue`: Use LCI completion queue.
+    - `hpx.parcel.lci.progress_type`: Determine the way to call `LCI_progress` (make progress on the LCI background works).
+        - `worker`: Use worker threads to call `LCI_progress`.
+        - `pthread`: Use a dedicated pthread to call `LCI_progress`.
+        - `rp`: Use HPX resource partitioner to create a dedicate thread to call `LCI_progress`.
+    - `hpx.parcel.lci.sendimm`: Boolean. Whether to bypass the connection cache and parcel queues.
+    - `hpx.parcel.lci.backlog_queue`: Boolean. Whether to enable the backlog queue.
+    - `hpx.parcel.lci.use_two_device`: Boolean. Whether to use two LCI devices for the `putva` protocol.
+    - `hpx.parcel.lci.prepost_recv_num`: Int. Number of receives to post for the header messages. Only applies to the `sendrecv` protocol.
+    
+    Co-authored-by: Jiakun Yan <jiakunyan1998@gmail.com>
+
+[33mcommit 31fc8b9f1614da63423a719fbddb5b6abac08be9[m
+Author: Hartmut Kaiser <hartmut.kaiser@gmail.com>
+Date:   Thu May 18 17:30:08 2023 -0500
+
+    Fixing cmake-format issue
+
+[33mcommit 7cbf1694427e28ae9a60d020c97f9b23f2bfd073[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu May 18 17:10:59 2023 -0500
+
+    Remove broken node for testing
+
+[33mcommit 20b37160868578de7ce73b0d948e1f1283952b28[m
+Author: Gregor Daiss <Gregor.Daiss+git@gmail.com>
+Date:   Thu May 18 15:39:01 2023 -0500
+
+    Allow jenkins hip builds with warnings

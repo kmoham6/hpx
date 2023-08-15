@@ -71,6 +71,7 @@ namespace hpx::execution {
     /// The algorithm returns a future representing the result of the
     /// corresponding algorithm when invoked with the sequenced_policy.
     using simd_task_policy = detail::simd_task_policy_shim<sequenced_executor>;
+    
 
     namespace detail {
 
