@@ -1,0 +1,355 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake:204 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 4.18.0-477.21.1.el8_8.x86_64 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /opt/apps/gcc/13.1.0/bin/g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/3.26.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE"
+      binary: "/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE
+        
+        Run Build Command(s):/opt/apps/cmake/3.26.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_49c1f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_49c1f.dir/build.make CMakeFiles/cmTC_49c1f.dir/build
+        gmake[1]: Entering directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE'
+        Building CXX object CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o
+        /opt/apps/gcc/13.1.0/bin/g++   -v -o CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o -c /opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/opt/apps/gcc/13.1.0/bin/g++
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-redhat-linux
+        Configured with: ./configure --prefix=/opt/apps/gcc/13.1.0 --with-pkgversion=20230516 --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --disable-multilib --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --disable-libunwind-exceptions --enable-gnu-unique-object --enable-__cxa_atexit --enable-initfini-array --disable-libgcj --enable-linker-build-id --enable-gnu-indirect-function --enable-cet --disable-libmpx --with-isl --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux --enable-offload-targets=nvptx-none --enable-libssp --enable-gold=default --enable-ld=yes --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --without-cuda-driver --enable-offload-defaulted
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.1.0 (20230516) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_49c1f.dir/'
+         /opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/cc1plus -quiet -v -D_GNU_SOURCE /opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_49c1f.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccHow43R.s
+        GNU C++17 (20230516) version 13.1.0 (x86_64-redhat-linux)
+        	compiled by GNU C version 13.1.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../x86_64-redhat-linux/include"
+        ignoring nonexistent directory "include"
+        ignoring duplicate directory "/opt/apps/gcc/13.1.0/include"
+          as it is a non-system directory that duplicates a system directory
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /opt/apps/gcc13/boost/1.82.0/release
+         /opt/apps/hwloc/2.9.1/include
+         /opt/apps/openmpi/4.1.5/include
+         /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0
+         /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/x86_64-redhat-linux
+         /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/backward
+         /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include
+         /usr/local/include
+         /opt/apps/gcc/13.1.0/include
+         /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include-fixed
+         /usr/include
+        End of search list.
+        Compiler executable checksum: fa189b419bae2e836fbfc6744574a2ab
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_49c1f.dir/'
+         as -v --64 -o CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccHow43R.s
+        GNU assembler version 2.40 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40
+        COMPILER_PATH=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/
+        LIBRARY_PATH=/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_49c1f
+        /opt/apps/cmake/3.26.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49c1f.dir/link.txt --verbose=1
+        /opt/apps/gcc/13.1.0/bin/g++  -v CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_49c1f 
+        Using built-in specs.
+        COLLECT_GCC=/opt/apps/gcc/13.1.0/bin/g++
+        COLLECT_LTO_WRAPPER=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        OFFLOAD_TARGET_DEFAULT=1
+        Target: x86_64-redhat-linux
+        Configured with: ./configure --prefix=/opt/apps/gcc/13.1.0 --with-pkgversion=20230516 --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --disable-multilib --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --disable-libunwind-exceptions --enable-gnu-unique-object --enable-__cxa_atexit --enable-initfini-array --disable-libgcj --enable-linker-build-id --enable-gnu-indirect-function --enable-cet --disable-libmpx --with-isl --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux --enable-offload-targets=nvptx-none --enable-libssp --enable-gold=default --enable-ld=yes --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --without-cuda-driver --enable-offload-defaulted
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 13.1.0 (20230516) 
+        COMPILER_PATH=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/
+        LIBRARY_PATH=/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_49c1f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_49c1f.'
+         /opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/collect2 -plugin /opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/liblto_plugin.so -plugin-opt=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnpNahg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_49c1f /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtbegin.o -L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0 -L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../.. CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtend.o /lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_49c1f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_49c1f.'
+        gmake[1]: Leaving directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/opt/apps/gcc13/boost/1.82.0/release]
+          add: [/opt/apps/hwloc/2.9.1/include]
+          add: [/opt/apps/openmpi/4.1.5/include]
+          add: [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0]
+          add: [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/x86_64-redhat-linux]
+          add: [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/backward]
+          add: [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include]
+          add: [/usr/local/include]
+          add: [/opt/apps/gcc/13.1.0/include]
+          add: [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/opt/apps/gcc13/boost/1.82.0/release] ==> [/opt/apps/gcc13/boost/1.82.0/release]
+        collapse include dir [/opt/apps/hwloc/2.9.1/include] ==> [/opt/apps/hwloc/2.9.1/include]
+        collapse include dir [/opt/apps/openmpi/4.1.5/include] ==> [/opt/apps/openmpi/4.1.5/include]
+        collapse include dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0] ==> [/opt/apps/gcc/13.1.0/include/c++/13.1.0]
+        collapse include dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/x86_64-redhat-linux] ==> [/opt/apps/gcc/13.1.0/include/c++/13.1.0/x86_64-redhat-linux]
+        collapse include dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/backward] ==> [/opt/apps/gcc/13.1.0/include/c++/13.1.0/backward]
+        collapse include dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include] ==> [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/opt/apps/gcc/13.1.0/include] ==> [/opt/apps/gcc/13.1.0/include]
+        collapse include dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include-fixed] ==> [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/opt/apps/gcc13/boost/1.82.0/release;/opt/apps/hwloc/2.9.1/include;/opt/apps/openmpi/4.1.5/include;/opt/apps/gcc/13.1.0/include/c++/13.1.0;/opt/apps/gcc/13.1.0/include/c++/13.1.0/x86_64-redhat-linux;/opt/apps/gcc/13.1.0/include/c++/13.1.0/backward;/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include;/usr/local/include;/opt/apps/gcc/13.1.0/include;/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE]
+        ignore line: []
+        ignore line: [Run Build Command(s):/opt/apps/cmake/3.26.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_49c1f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_49c1f.dir/build.make CMakeFiles/cmTC_49c1f.dir/build]
+        ignore line: [gmake[1]: Entering directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-RwMfEE']
+        ignore line: [Building CXX object CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/opt/apps/gcc/13.1.0/bin/g++   -v -o CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o -c /opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/opt/apps/gcc/13.1.0/bin/g++]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-redhat-linux]
+        ignore line: [Configured with: ./configure --prefix=/opt/apps/gcc/13.1.0 --with-pkgversion=20230516 --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --disable-multilib --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --disable-libunwind-exceptions --enable-gnu-unique-object --enable-__cxa_atexit --enable-initfini-array --disable-libgcj --enable-linker-build-id --enable-gnu-indirect-function --enable-cet --disable-libmpx --with-isl --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux --enable-offload-targets=nvptx-none --enable-libssp --enable-gold=default --enable-ld=yes --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --without-cuda-driver --enable-offload-defaulted]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.1.0 (20230516) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_49c1f.dir/']
+        ignore line: [ /opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/cc1plus -quiet -v -D_GNU_SOURCE /opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_49c1f.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccHow43R.s]
+        ignore line: [GNU C++17 (20230516) version 13.1.0 (x86_64-redhat-linux)]
+        ignore line: [	compiled by GNU C version 13.1.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../x86_64-redhat-linux/include"]
+        ignore line: [ignoring nonexistent directory "include"]
+        ignore line: [ignoring duplicate directory "/opt/apps/gcc/13.1.0/include"]
+        ignore line: [  as it is a non-system directory that duplicates a system directory]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /opt/apps/gcc13/boost/1.82.0/release]
+        ignore line: [ /opt/apps/hwloc/2.9.1/include]
+        ignore line: [ /opt/apps/openmpi/4.1.5/include]
+        ignore line: [ /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0]
+        ignore line: [ /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/x86_64-redhat-linux]
+        ignore line: [ /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../include/c++/13.1.0/backward]
+        ignore line: [ /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /opt/apps/gcc/13.1.0/include]
+        ignore line: [ /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: fa189b419bae2e836fbfc6744574a2ab]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_49c1f.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccHow43R.s]
+        ignore line: [GNU assembler version 2.40 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.40]
+        ignore line: [COMPILER_PATH=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/]
+        ignore line: [LIBRARY_PATH=/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_49c1f]
+        ignore line: [/opt/apps/cmake/3.26.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49c1f.dir/link.txt --verbose=1]
+        ignore line: [/opt/apps/gcc/13.1.0/bin/g++  -v CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_49c1f ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/opt/apps/gcc/13.1.0/bin/g++]
+        ignore line: [COLLECT_LTO_WRAPPER=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [OFFLOAD_TARGET_DEFAULT=1]
+        ignore line: [Target: x86_64-redhat-linux]
+        ignore line: [Configured with: ./configure --prefix=/opt/apps/gcc/13.1.0 --with-pkgversion=20230516 --enable-bootstrap --enable-shared --enable-threads=posix --enable-checking=release --with-system-zlib --disable-multilib --enable-languages=c,c++,fortran,lto --enable-plugin --with-linker-hash-style=gnu --disable-libunwind-exceptions --enable-gnu-unique-object --enable-__cxa_atexit --enable-initfini-array --disable-libgcj --enable-linker-build-id --enable-gnu-indirect-function --enable-cet --disable-libmpx --with-isl --with-tune=generic --with-arch_32=x86-64 --build=x86_64-redhat-linux --enable-offload-targets=nvptx-none --enable-libssp --enable-gold=default --enable-ld=yes --enable-libstdcxx-backtrace --with-libstdcxx-zoneinfo=/usr/share/zoneinfo --without-cuda-driver --enable-offload-defaulted]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 13.1.0 (20230516) ]
+        ignore line: [COMPILER_PATH=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/]
+        ignore line: [LIBRARY_PATH=/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_49c1f' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_49c1f.']
+        link line: [ /opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/collect2 -plugin /opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/liblto_plugin.so -plugin-opt=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnpNahg.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_49c1f /lib/../lib64/crt1.o /lib/../lib64/crti.o /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtbegin.o -L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0 -L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../.. CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtend.o /lib/../lib64/crtn.o]
+          arg [/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/opt/apps/gcc/13.1.0/libexec/gcc/x86_64-redhat-linux/13.1.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccnpNahg.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [--hash-style=gnu] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_49c1f] ==> ignore
+          arg [/lib/../lib64/crt1.o] ==> obj [/lib/../lib64/crt1.o]
+          arg [/lib/../lib64/crti.o] ==> obj [/lib/../lib64/crti.o]
+          arg [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtbegin.o] ==> obj [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtbegin.o]
+          arg [-L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0] ==> dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0]
+          arg [-L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64] ==> dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../..] ==> dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../..]
+          arg [CMakeFiles/cmTC_49c1f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtend.o] ==> obj [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtend.o]
+          arg [/lib/../lib64/crtn.o] ==> obj [/lib/../lib64/crtn.o]
+        collapse obj [/lib/../lib64/crt1.o] ==> [/lib64/crt1.o]
+        collapse obj [/lib/../lib64/crti.o] ==> [/lib64/crti.o]
+        collapse obj [/lib/../lib64/crtn.o] ==> [/lib64/crtn.o]
+        collapse library dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0] ==> [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0]
+        collapse library dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../../../lib64] ==> [/opt/apps/gcc/13.1.0/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/../../..] ==> [/opt/apps/gcc/13.1.0/lib]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/lib64/crt1.o;/lib64/crti.o;/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtbegin.o;/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0/crtend.o;/lib64/crtn.o]
+        implicit dirs: [/opt/apps/gcc/13.1.0/lib/gcc/x86_64-redhat-linux/13.1.0;/opt/apps/gcc/13.1.0/lib64;/lib64;/usr/lib64;/opt/apps/gcc/13.1.0/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/CheckCXXSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/FindThreads.cmake:99 (CHECK_CXX_SOURCE_COMPILES)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/work/karame.mp/hpx_march/hpx/cmake/HPX_SetupThreads.cmake:9 (find_package)"
+      - "/work/karame.mp/hpx_march/hpx/build_release/lib/cmake/HPX/HPXConfig.cmake:119 (include)"
+      - "CMakeLists.txt:4 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-Lr0dHI"
+      binary: "/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-Lr0dHI"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/work/karame.mp/hpx_march/hpx/cmake;"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-Lr0dHI
+        
+        Run Build Command(s):/opt/apps/cmake/3.26.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b4bd4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b4bd4.dir/build.make CMakeFiles/cmTC_b4bd4.dir/build
+        gmake[1]: Entering directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-Lr0dHI'
+        Building CXX object CMakeFiles/cmTC_b4bd4.dir/src.cxx.o
+        /opt/apps/gcc/13.1.0/bin/g++ -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_b4bd4.dir/src.cxx.o -c /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-Lr0dHI/src.cxx
+        Linking CXX executable cmTC_b4bd4
+        /opt/apps/cmake/3.26.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4bd4.dir/link.txt --verbose=1
+        /opt/apps/gcc/13.1.0/bin/g++ CMakeFiles/cmTC_b4bd4.dir/src.cxx.o -o cmTC_b4bd4 
+        CMakeFiles/cmTC_b4bd4.dir/src.cxx.o:src.cxx:function main: error: undefined reference to 'pthread_create'
+        CMakeFiles/cmTC_b4bd4.dir/src.cxx.o:src.cxx:function main: error: undefined reference to 'pthread_detach'
+        CMakeFiles/cmTC_b4bd4.dir/src.cxx.o:src.cxx:function main: error: undefined reference to 'pthread_cancel'
+        CMakeFiles/cmTC_b4bd4.dir/src.cxx.o:src.cxx:function main: error: undefined reference to 'pthread_join'
+        collect2: error: ld returned 1 exit status
+        gmake[1]: *** [CMakeFiles/cmTC_b4bd4.dir/build.make:99: cmTC_b4bd4] Error 1
+        gmake[1]: Leaving directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-Lr0dHI'
+        gmake: *** [Makefile:127: cmTC_b4bd4/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/FindThreads.cmake:136 (try_compile)"
+      - "/opt/apps/cmake/3.26.3/share/cmake-3.26/Modules/FindThreads.cmake:169 (_threads_check_flag_pthread)"
+      - "/work/karame.mp/hpx_march/hpx/cmake/HPX_SetupThreads.cmake:9 (find_package)"
+      - "/work/karame.mp/hpx_march/hpx/build_release/lib/cmake/HPX/HPXConfig.cmake:119 (include)"
+      - "CMakeLists.txt:4 (find_package)"
+    checks:
+      - "Check if compiler accepts -pthread"
+    directories:
+      source: "/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-zwAajQ"
+      binary: "/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-zwAajQ"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/work/karame.mp/hpx_march/hpx/cmake;"
+    buildResult:
+      variable: "THREADS_HAVE_PTHREAD_ARG"
+      cached: true
+      stdout: |
+        Change Dir: /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-zwAajQ
+        
+        Run Build Command(s):/opt/apps/cmake/3.26.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3b0f1/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3b0f1.dir/build.make CMakeFiles/cmTC_3b0f1.dir/build
+        gmake[1]: Entering directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-zwAajQ'
+        Building CXX object CMakeFiles/cmTC_3b0f1.dir/CheckForPthreads.cxx.o
+        /opt/apps/gcc/13.1.0/bin/g++    -o CMakeFiles/cmTC_3b0f1.dir/CheckForPthreads.cxx.o -c /work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-zwAajQ/CheckForPthreads.cxx
+        Linking CXX executable cmTC_3b0f1
+        /opt/apps/cmake/3.26.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3b0f1.dir/link.txt --verbose=1
+        /opt/apps/gcc/13.1.0/bin/g++ CMakeFiles/cmTC_3b0f1.dir/CheckForPthreads.cxx.o -o cmTC_3b0f1  -pthread 
+        gmake[1]: Leaving directory '/work/karame.mp/hpx_march/benchmark_time/benchmark_string/build/CMakeFiles/CMakeScratch/TryCompile-zwAajQ'
+        
+      exitCode: 0
+...
