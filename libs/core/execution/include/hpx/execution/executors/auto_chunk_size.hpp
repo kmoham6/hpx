@@ -92,12 +92,13 @@ namespace hpx::execution::experimental {
                     t = (high_resolution_clock::now() - t) / test_chunk_size;
                     if (t != 0 && min_time_ >= t)
                     {
+                        std::cout << "time per iteration: " << t << std::endl;
                         // return execution time for one iteration
                         return std::chrono::nanoseconds(t);
                     }
                 }
             }
-
+            std::cout << "are you here? " << std::endl;
             return std::chrono::nanoseconds(0);
         }
 
