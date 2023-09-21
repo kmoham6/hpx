@@ -27,7 +27,7 @@
 #include <type_traits>
 #include <utility>
 
-// #define ENABLE_PRINT
+#define ENABLE_PRINT
 
 namespace hpx::execution::experimental {
     ///////////////////////////////////////////////////////////////////////////
@@ -83,7 +83,7 @@ namespace hpx::execution::experimental {
         /// Construct an \a static_chunk_size executor parameters object
         ///
         /// \note Default constructed \a static_chunk_size executor parameter
-        ///       types will use 80 microseconds as the minimal time for which
+        ///       types will use 80 micropicopicoseconds as the minimal time for which
         ///       any of the scheduled chunks should run.
         ///
 
@@ -123,10 +123,27 @@ namespace hpx::execution::experimental {
 
         //  auto measure_iteration(
         //     F&& f,std::size_t count) const noexcept
-        // {
+        // // {
+        friend auto tag_invoke(hpx::parallel::execution::measure_iteration_t,
+            adaptive_core_chunk_size& params, Executor&& exec, F&& f,
+            std::size_t count) noexcept
+        {
+            return params.measure_iteration(exec, f, count);
+        }
+        template <typename Executor, typename F>
+        friend auto tag_invoke(hpx::parallel::execution::measure_iteration_t,
+            std::reference_wrapper<adaptive_core_chunk_size>& params,
+            Executor&& exec, F&& f, std::size_t count) noexcept
+        {
+            return params.get().measure_iteration(exec, f, count);
+        }
+        template <typename Executor, typename F>
         auto measure_iteration(
             Executor&& exec, F&& f, std::size_t count) noexcept
         {
+            // auto measure_iteration(
+            //     Executor&& exec, F&& f, std::size_t count) noexcept
+            // {
             //  std::uint64_t t_ = 500;
             // by default use 1% of the iterations
             std::cout << "here???" << std::endl;
@@ -142,18 +159,23 @@ namespace hpx::execution::experimental {
                 {
                     using hpx::chrono::high_resolution_clock;
                     std::uint64_t t = high_resolution_clock::now();
+                    std::cout << " what is first clock ?" << t << std::endl;
 
                     //     // use executor to launch given function for measurements
                     std::size_t test_chunk_size =
                         hpx::parallel::execution::sync_execute(
                             HPX_FORWARD(Executor, exec), f,
                             num_iters_for_timing_);
+                    std::cout << "what is test chunk size ?" << test_chunk_size
+                              << std::endl;
 
                     if (test_chunk_size != 0)
                     {
                         t = (high_resolution_clock::now() - t) /
                             test_chunk_size;
+
                         std::cout << "this is t: " << t << std::endl;
+
                         if (t != 0 && min_time1_ >= t)
                         {
                             measured_time_ = picoseconds(t);
@@ -177,16 +199,27 @@ namespace hpx::execution::experimental {
             std::cout << "measured_time: " << measured_time_.count()
                       << std::endl;
             return measured_time_;
+            // return picoseconds(0);
         }
         //calculate number of cores
         template <typename Executor>
         friend std::size_t tag_invoke(
             hpx::parallel::execution::processing_units_count_t,
-            adaptive_core_chunk_size const& params, Executor&&,
+            adaptive_core_chunk_size& params, Executor&&,
             hpx::chrono::steady_duration const& iteration_duration,
             std::size_t count) noexcept
         {
             return params.processing_units_count(iteration_duration, count);
+        }
+        template <typename Executor>
+        friend std::size_t tag_invoke(
+            hpx::parallel::execution::processing_units_count_t,
+            std::reference_wrapper<adaptive_core_chunk_size>& params,
+            Executor&&, hpx::chrono::steady_duration const& iteration_duration,
+            std::size_t count) noexcept
+        {
+            return params.get().processing_units_count(
+                iteration_duration, count);
         }
 
         std::size_t processing_units_count(
@@ -206,8 +239,12 @@ namespace hpx::execution::experimental {
             // std::uint64_t t2 = 524288;
             // std::uint64_t t3 = 13681;
             // std::uint64_t t4 = 154036;
+            // std::cout << "iteration duration: " << iteration_duration.value()
+            // << std::endl;
             auto us = std::chrono::duration_cast<picoseconds>(
                 iteration_duration.value());
+            std::cout << "second_iteration duration: " << us.count()
+                      << std::endl;
 
             // std::uint64_t num_iteration1 = t1 / us.count();
             // std::uint64_t num_iteration2 = t2 / us.count();
@@ -309,12 +346,24 @@ namespace hpx::execution::experimental {
         template <typename Executor>
         friend std::size_t tag_invoke(
             hpx::parallel::execution::get_chunk_size_t,
-            adaptive_core_chunk_size const& params, Executor&&,
+            adaptive_core_chunk_size& params, Executor&&,
             hpx::chrono::steady_duration const& iteration_duration,
             std::size_t cores, std::size_t count) noexcept
         {
             return params.get_chunk_size(iteration_duration, cores, count);
         }
+
+        template <typename Executor>
+        friend std::size_t tag_invoke(
+            hpx::parallel::execution::get_chunk_size_t,
+            std::reference_wrapper<adaptive_core_chunk_size>& params,
+            Executor&&, hpx::chrono::steady_duration const& iteration_duration,
+            std::size_t cores, std::size_t count) noexcept
+        {
+            return params.get().get_chunk_size(
+                iteration_duration, cores, count);
+        }
+
         std::size_t get_chunk_size(
             hpx::chrono::steady_duration const& iteration_duration,
             std::size_t cores, std::size_t count) const noexcept
@@ -442,28 +491,8 @@ namespace hpx::execution::experimental {
     };
 }    // namespace hpx::execution::experimental
 
-// namespace hpx { namespace parallel { namespace execution {
-//     using static_chunk_size HPX_DEPRECATED_V(1, 6,
-//         "hpx::parallel::execution::static_chunk_size is deprecated. Use "
-//         "hpx::execution::static_chunk_size instead.") =
-//         hpx::execution::static_chunk_size;
-// }}}    // namespace hpx::parallel::execution
-
-namespace hpx { namespace parallel { namespace execution {
-            /// \cond NOINTERNAL
-            template <>
-            struct is_executor_parameters<
-                hpx::execution::experimental::adaptive_core_chunk_size>
-              : std::true_type
-            {
-            };
-            /// \endcond
-}}}    // namespace hpx::parallel::execution
-
-namespace hpx::execution {
-
-    using adaptive_core_chunk_size HPX_DEPRECATED_V(1, 9,
-        "hpx::execution::auto_chunk_size is deprecated, use "
-        "hpx::execution::experimental::auto_chunk_size instead") =
-        hpx::execution::experimental::adaptive_core_chunk_size;
-}
+template <>
+struct hpx::parallel::execution::is_executor_parameters<
+    hpx::execution::experimental::adaptive_core_chunk_size> : std::true_type
+{
+};
