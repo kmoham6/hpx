@@ -27,7 +27,7 @@
 #include <type_traits>
 #include <utility>
 
-#define ENABLE_PRINT
+// #define ENABLE_PRINT
 
 namespace hpx::execution::experimental {
     ///////////////////////////////////////////////////////////////////////////
@@ -125,14 +125,14 @@ namespace hpx::execution::experimental {
         //     F&& f,std::size_t count) const noexcept
         // // {
         friend auto tag_invoke(hpx::parallel::execution::measure_iteration_t,
-            adaptive_core_chunk_size& params, Executor&& exec, F&& f,
+            adaptive_core_chunk_size const& params, Executor&& exec, F&& f,
             std::size_t count) noexcept
         {
             return params.measure_iteration(exec, f, count);
         }
         template <typename Executor, typename F>
         friend auto tag_invoke(hpx::parallel::execution::measure_iteration_t,
-            std::reference_wrapper<adaptive_core_chunk_size>& params,
+            std::reference_wrapper<adaptive_core_chunk_size> const& params,
             Executor&& exec, F&& f, std::size_t count) noexcept
         {
             return params.get().measure_iteration(exec, f, count);
