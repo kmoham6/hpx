@@ -1,0 +1,369 @@
+//  Copyright (c) 2023 Karame M.shokooh
+//  Copyright (c) 2007-2023 Hartmut Kaiser
+
+//  SPDX-License-Identifier: BSL-1.0
+//  Distributed under the Boost Software License, Version 1.0. (See accompanying
+//  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+/// \file parallel/executors/adaptive_core_chunk_size.hpp
+
+#pragma once
+
+#include <hpx/config.hpp>
+#include <hpx/execution/executors/execution_parameters.hpp>
+#include <hpx/execution_base/execution.hpp>
+#include <hpx/execution_base/traits/is_executor_parameters.hpp>
+#include <hpx/modules/timing.hpp>
+#include <hpx/serialization/serialize.hpp>
+
+#include <hpx/execution_base/execution.hpp>
+#include <hpx/timing/high_resolution_clock.hpp>
+#include <hpx/timing/steady_clock.hpp>
+
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <iostream>
+#include <type_traits>
+#include <utility>
+
+// #define ENABLE_PRINT
+
+namespace hpx::execution::experimental {
+    ///////////////////////////////////////////////////////////////////////////
+    /// Loop iterations are divided into pieces of size \a chunk_size and then
+    /// assigned to threads. If \a chunk_size is not specified, the iterations
+    /// are evenly (if possible) divided contiguously among the threads.
+    ///
+    /// \note This executor parameters type is equivalent to OpenMP's STATIC
+    ///       scheduling directive.
+    ///
+    struct adaptive_core_chunk_size
+    {
+    private:
+        typedef std::chrono::duration<double, std::pico> picoseconds;
+
+    public:
+        /// Construct a \a static_chunk_size executor parameters object
+        ///
+        /// \note By default the number of loop iterations is determined from
+        ///       the number of available cores and the overall number of loop
+        ///       iterations to schedule.
+        ///
+
+        constexpr adaptive_core_chunk_size() noexcept
+          : chunk_size_(0)
+          , tim_ov_(1000000)
+          , measured_time_(0)
+          , num_iters_for_timing_(0)
+        {
+        }
+
+        /// Construct a \a static_chunk_size executor parameters object
+        ///
+        /// \param chunk_size   [in] The optional chunk size to use as the
+        ///                     number of loop iterations to run on a single
+        ///                     thread.
+        ///
+        constexpr explicit adaptive_core_chunk_size(std::size_t chunk_size)
+          : chunk_size_(chunk_size)
+          , tim_ov_(1000000)
+          , measured_time_(0)
+          , num_iters_for_timing_(0)
+        {
+        }
+
+        /// Construct an \a static_chunk_size executor parameters object
+        ///
+        /// \note Default constructed \a static_chunk_size executor parameter
+        ///       types will use 80 micropicopicoseconds as the minimal time for which
+        ///       any of the scheduled chunks should run.
+        ///
+        explicit adaptive_core_chunk_size(
+            hpx::chrono::steady_duration const& rel_time) noexcept
+          : tim_ov_(rel_time.value().count())
+        {
+        }
+
+        /// \cond NOINTERNAL
+        // This executor parameters type synchronously invokes the provided
+        // testing function in order to approximate the chunk-size.
+        using invokes_testing_function = std::true_type;
+
+        // Estimate execution time for one iteration
+        template <typename Executor, typename F>
+        friend auto tag_override_invoke(
+            hpx::parallel::execution::measure_iteration_t,
+            adaptive_core_chunk_size& this_, Executor&& exec, F&& f,
+            std::size_t count) noexcept
+
+        {
+            return this_.measure_iteration(
+                HPX_FORWARD(Executor, exec), HPX_FORWARD(F, f), count);
+        }
+        template <typename Executor, typename F>
+        friend auto tag_override_invoke(
+            hpx::parallel::execution::measure_iteration_t,
+            std::reference_wrapper<adaptive_core_chunk_size>& this_,
+            Executor&& exec, F&& f, std::size_t count) noexcept
+        {
+            return this_.get().measure_iteration(
+                HPX_FORWARD(Execotor, exec), HPX_FORWARD(F, f), count);
+        }
+        template <typename Executor, typename F>
+        auto measure_iteration(
+            Executor&& exec, F&& f, std::size_t count) noexcept
+        {
+            // by default use 1% of the iterations
+            // std::cout << "here???" << std::endl;
+            if (measured_time_.count() == 0)
+            {
+                if (num_iters_for_timing_ == 0)
+                {
+                    num_iters_for_timing_ = count / 100;
+                }
+
+                // // perform measurements only if necessary
+                if (num_iters_for_timing_ > 0)
+                {
+                    using hpx::chrono::high_resolution_clock;
+                    std::uint64_t t1 = high_resolution_clock::now();
+                    // std::cout << " what is first clock ?" << t1 << std::endl;
+
+                    //     // use executor to launch given function for measurements
+                    std::size_t const test_chunk_size =
+                        hpx::parallel::execution::sync_execute(
+                            HPX_FORWARD(Executor, exec), f,
+                            num_iters_for_timing_);
+                    // std::cout << "what is test chunk size ?" << test_chunk_size
+                    //   << std::endl;
+
+                    if (test_chunk_size != 0)
+                    {
+                        std::uint64_t t2 = high_resolution_clock::now();
+                        std::uint64_t t = t2 - t1;
+                        picoseconds t_picoseconds(t);
+
+                        auto picosec_duration =
+                            static_cast<double>(t) / test_chunk_size;
+                        measured_time_ = picoseconds(picosec_duration);
+                        // std::cout << "this is t: " << t << std::endl;
+
+                        if (measured_time_.count() != 0 &&
+                            tim_ov_ >= measured_time_.count())
+                        {
+                            measured_time_ = picoseconds(t);
+                            // std::cout << "first_measured_time: "
+                            // << measured_time_.count() << std::endl;
+                            return measured_time_;
+                        }
+                    }
+                }
+            }
+            // std::cout << "measured_time: " << measured_time_.count()
+            // << std::endl;
+            return measured_time_;
+            // return picoseconds(0);
+        }
+        //calculate number of cores
+        template <typename Executor>
+        friend std::size_t tag_override_invoke(
+            hpx::parallel::execution::processing_units_count_t,
+            adaptive_core_chunk_size& this_, Executor&& exec,
+            hpx::chrono::steady_duration const& iteration_duration,
+            std::size_t count) noexcept
+        // {
+        //     return params.processing_units_count(iteration_duration, count);
+        // }
+        // template <typename Executor>
+        // friend std::size_t tag_override_invoke(
+        //     hpx::parallel::execution::processing_units_count_t,
+        //     std::reference_wrapper<adaptive_core_chunk_size>& params,
+        //     Executor&&, hpx::chrono::steady_duration const& iteration_duration,
+        //     std::size_t count) noexcept
+        // {
+        //     return params.get().processing_units_count(
+        //         iteration_duration, count);
+        // }
+
+        // std::size_t processing_units_count(
+        //     hpx::chrono::steady_duration const& iteration_duration,
+        //     std::size_t count) const noexcept
+        {
+            std::size_t s_core =
+                hpx::parallel::execution::processing_units_count(
+                    exec, iteration_duration, count);
+
+            auto us = std::chrono::duration_cast<picoseconds>(
+                iteration_duration.value());
+            // std::cout << "second_iteration duration: " << us.count()
+            //   << std::endl;
+
+            // std::size_t s_core = 32;
+#ifdef ENABLE_PRINT
+            std::cout << "\n\n"
+                      << "this part is the start of adaptive_core_chunk_size : "
+                      << "********************************************"
+                      << "\n"
+                      << std::endl;
+            std::cout << "this is count in proccessing_unit: " << count
+                      << std::endl;
+            std::cout << "this is time per iteration:" << us.count()
+                      << std::endl;
+// std::cout << "this is number of cores:" << (count * us.count()) / min_time_ <<std::endl;
+// std::cout << "this is min_time:" << min_time_ <<std::endl;
+#endif
+            std::cout << "this is time per iteration:" << us.count()
+                      << std::endl;
+
+            std::size_t t_time = (count + 1) * us.count();
+            std::size_t Time;
+            double S = 0.052;
+
+#ifdef ENABLE_PRINT
+            std::cout << "this is t_time: " << t_time << std::endl;
+#endif
+
+            Time = (t_time / this_.tim_ov_) * S;
+            std::size_t num_cores = (std::min)(s_core, (std::size_t) Time);
+#ifdef ENABLE_PRINT
+            // std::cout <<"t_time / min_time2_: " << t_time / min_time2_ << std::endl;
+            std::cout << "what is Time? " << Time << std::endl;
+            std::cout << "this is number of cores:"
+                      << (count * us.count()) / this_.tim_ov_ << std::endl;
+            std::cout << "this is number of cores:" << num_cores << std::endl;
+            std::cout << "this is min_time1:" << this_.tim_ov_ << std::endl;
+            std::cout << "this is s_core: " << s_core << std::endl;
+#endif
+
+#ifdef ENABLE_PRINT
+            std::cout << "this is t_time / tim_ov_: " << t_time / this_.tim_ov_
+                      << std::endl;
+#endif
+
+            if (num_cores < 2)
+            {
+                num_cores = 1;
+            }
+#ifdef ENABLE_PRINT
+            std::cout << "this is the final number of cores:" << num_cores
+                      << std::endl;
+#endif
+            return num_cores;
+        }
+
+        // Estimate a chunk size based on number of cores used.
+        template <typename Executor>
+        friend std::size_t tag_override_invoke(
+            hpx::parallel::execution::get_chunk_size_t,
+            adaptive_core_chunk_size& this_, Executor&&,
+            hpx::chrono::steady_duration const& iteration_duration,
+            std::size_t cores, std::size_t count) noexcept
+        // {
+        //     return params.get_chunk_size(iteration_duration, cores, count);
+        // }
+
+        // template <typename Executor>
+        // friend std::size_t tag_override_invoke(
+        //     hpx::parallel::execution::get_chunk_size_t,
+        //     std::reference_wrapper<adaptive_core_chunk_size>& params,
+        //     Executor&&, hpx::chrono::steady_duration const& iteration_duration,
+        //     std::size_t cores, std::size_t count) noexcept
+        // {
+        //     return params.get().get_chunk_size(
+        //         iteration_duration, cores, count);
+        // }
+
+        // std::size_t get_chunk_size(
+        //     hpx::chrono::steady_duration const& iteration_duration,
+        //     std::size_t cores, std::size_t count) const noexcept
+        {
+#ifdef ENABLE_PRINT
+            std::cout << "\n" << std::endl;
+            std::cout << "this is number of cores in get_chunk_chunk: " << cores
+                      << std::endl;
+#endif
+            // return chunk size which will create the required amount of work
+            if (iteration_duration.value().count() != 0)
+            {
+                auto ns = std::chrono::duration_cast<picoseconds>(
+                    iteration_duration.value());
+            }
+
+            // use the given chunk size if given
+            if (this_.chunk_size_ != 0)
+            {
+                return this_.chunk_size_;
+            }
+
+            // Return a chunk size that is a power of two; and that leads to at
+            // least 2 chunks per core, and at most 4 chunks per core.
+            std::size_t chunk_size = 1;
+            double coeff = 1;
+
+            if (cores <= 2)
+            {
+                coeff = 2;
+            }
+
+            else
+            {
+                coeff = 8;
+            }
+#ifdef ENABLE_PRINT
+            // std::cout << "\n" << "chunk_size*cores*coeff : " << chunk_size * cores * coeff << std::endl;
+            std::cout << "\n"
+                      << "cores that are used to calculate chunks: " << cores
+                      << std::endl;
+#endif
+
+            while (chunk_size * cores * coeff < count)
+            {
+                chunk_size *= 2;
+            }
+#ifdef ENABLE_PRINT
+            std::cout << "this is chunk_size: " << chunk_size << std::endl;
+            std::cout << "this is cores:: " << cores << std::endl;
+            std::cout << "this is count: " << count << std::endl;
+            std::cout << "\n"
+                      << "this is the end of adaptive_core_chunk_size"
+                      << "*****************************************"
+                      << "\n\n"
+                      << std::endl;
+
+#endif
+
+            return chunk_size;
+        }
+        /// \endcond
+
+    private:
+        /// \cond NOINTERNAL
+        friend class hpx::serialization::access;
+
+        template <typename Archive>
+        void serialize(Archive& ar, const unsigned int /* version */)
+        {
+            ar & chunk_size_ & tim_ov_ & measured_time_;
+        }
+        /// \endcond
+
+    private:
+        /// \cond NOINTERNAL
+        std::size_t chunk_size_;
+
+        // target time for on thread (picoseconds)
+        std::uint64_t tim_ov_;
+        picoseconds measured_time_;
+        std::uint64_t num_iters_for_timing_;
+
+        /// \endcond
+    };
+}    // namespace hpx::execution::experimental
+
+template <>
+struct hpx::parallel::execution::is_executor_parameters<
+    hpx::execution::experimental::adaptive_core_chunk_size> : std::true_type
+{
+};
